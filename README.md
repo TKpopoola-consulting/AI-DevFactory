@@ -1,5 +1,7 @@
 📌 README.md — AI DevFactory: Continuous AI Coding System
+
 🚀 AI DevFactory
+
 AI DevFactory is an open-source, AI-driven continuous coding system that turns natural language requirements into production-ready code — iteratively, collaboratively, and flexibly.
 It lets you build or modify software products using AI agents, Visual Studio Code workspaces, and your own cloud storage or GitHub.
 
