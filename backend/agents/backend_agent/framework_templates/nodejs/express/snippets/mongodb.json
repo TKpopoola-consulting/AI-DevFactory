@@ -1,0 +1,27 @@
+{
+    "mongodb_integration": {
+      "description": "Complete MongoDB integration with connection pooling",
+      "files": [
+        {
+          "path": "src/db/connection.js",
+          "content": "const { MongoClient } = require('mongodb');\n\nconst DB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017';\nconst DB_NAME = process.env.DB_NAME || '{{app_name}}';\n\nlet cachedDb = null;\n\nasync function connectToDatabase() {\n  if (cachedDb) return cachedDb;\n  \n  try {\n    const client = await MongoClient.connect(DB_URI, {\n      maxPoolSize: 10,\n      connectTimeoutMS: 5000,\n      socketTimeoutMS: 30000\n    });\n    \n    const db = client.db(DB_NAME);\n    cachedDb = { db, client };\n    console.log('MongoDB connected successfully');\n    return cachedDb;\n  } catch (err) {\n    console.error('MongoDB connection error:', err);\n    throw err;\n  }\n}\n\nmodule.exports = { connectToDatabase };"
+        },
+        {
+          "path": "src/middlewares/db.js",
+          "content": "const { connectToDatabase } = require('../db/connection');\n\nasync function dbMiddleware(req, res, next) {\n  try {\n    const { db } = await connectToDatabase();\n    req.db = db;\n    next();\n  } catch (err) {\n    res.status(503).json({ error: 'Database unavailable' });\n  }\n}\n\nmodule.exports = dbMiddleware;"
+        },
+        {
+          "path": "src/app.js",
+          "insert_at": "// Middleware",
+          "content": "const dbMiddleware = require('./middlewares/db');\n\n// Add after other middleware\napp.use(dbMiddleware);"
+        }
+      ],
+      "dependencies": {
+        "mongodb": "^5.7.0"
+      },
+      "env_vars": {
+        "MONGODB_URI": "mongodb://user:pass@host:port",
+        "DB_NAME": "production_db"
+      }
+    }
+  }

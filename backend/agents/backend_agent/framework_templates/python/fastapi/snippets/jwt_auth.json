@@ -1,0 +1,17 @@
+{
+    "jwt_authentication": {
+      "description": "JWT authentication setup",
+      "files": [
+        {
+          "path": "app/auth.py",
+          "content": "from datetime import datetime, timedelta\nfrom jose import JWTError, jwt\nfrom passlib.context import CryptContext\n\n# Configuration\nSECRET_KEY = \"your-secret-key\"\nALGORITHM = \"HS256\"\nACCESS_TOKEN_EXPIRE_MINUTES = 30\n\npwd_context = CryptContext(schemes=[\"bcrypt\"], deprecated=\"auto\")\n\ndef verify_password(plain_password, hashed_password):\n    return pwd_context.verify(plain_password, hashed_password)\n\ndef get_password_hash(password):\n    return pwd_context.hash(password)\n\ndef create_access_token(data: dict):\n    to_encode = data.copy()\n    expire = datetime.utcnow() + timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES)\n    to_encode.update({\"exp\": expire})\n    return jwt.encode(to_encode, SECRET_KEY, algorithm=ALGORITHM)"
+        },
+        {
+          "path": "app/main.py",
+          "insert_at": "# Add your routes here",
+          "content": "from .auth import create_access_token\n\n@app.post('/token')\ndef login():\n    # Implement your login logic\n    return {\"access_token\": create_access_token({\"sub\": \"user_id\"})}"
+        }
+      ],
+      "dependencies": ["python-jose[cryptography]", "passlib"]
+    }
+  }

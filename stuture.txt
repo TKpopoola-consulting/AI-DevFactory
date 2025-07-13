@@ -1,0 +1,745 @@
+C:.
+├───backend
+│   ├───agents
+│   │   ├───backend_agent
+│   │   │   ├───framework_templates
+│   │   │   │   ├───nodejs
+│   │   │   │   │   ├───express
+│   │   │   │   │   │   ├───base
+│   │   │   │   │   │   │   └───src
+│   │   │   │   │   │   │       └───routes
+│   │   │   │   │   │   └───snippets
+│   │   │   │   │   └───nestjs
+│   │   │   │   │       └───base
+│   │   │   │   │           └───src
+│   │   │   │   │               └───app.js
+│   │   │   │   │                   └───routes
+│   │   │   │   └───python
+│   │   │   │       ├───django
+│   │   │   │       │   ├───base
+│   │   │   │       │   │   └───{{project_name}}
+│   │   │   │       │   └───snippets
+│   │   │   │       └───fastapi
+│   │   │   │           ├───base
+│   │   │   │           │   ├───api
+│   │   │   │           │   │   └───v1
+│   │   │   │           │   │       └───endpoints
+│   │   │   │           │   └───models
+│   │   │   │           └───snippets
+│   │   │   ├───test
+│   │   │   ├───utils
+│   │   │   └───validation
+│   │   ├───frontend_agent
+│   │   │   ├───framework_templates
+│   │   │   │   ├───flutter
+│   │   │   │   │   ├───base
+│   │   │   │   │   │   └───lib
+│   │   │   │   │   └───snippets
+│   │   │   │   └───react
+│   │   │   │       ├───base
+│   │   │   │       │   └───src
+│   │   │   │       └───snippets
+│   │   │   ├───utils
+│   │   │   └───validation
+│   │   ├───infra_agent
+│   │   │   ├───templates
+│   │   │   │   ├───aws
+│   │   │   │   │   ├───pipelines
+│   │   │   │   │   └───terraform
+│   │   │   │   ├───azure
+│   │   │   │   │   ├───bicep
+│   │   │   │   │   └───pipelines
+│   │   │   │   └───gcp
+│   │   │   │       ├───pipelines
+│   │   │   │       └───terraform
+│   │   │   ├───utils
+│   │   │   └───validation
+│   │   └───qa_agent
+│   │       ├───templates
+│   │       │   └───test_suites
+│   │       │       ├───javascript
+│   │       │       └───python
+│   │       ├───tools
+│   │       └───utils
+│   ├───functions
+│   │   └───submitFeedback
+│   ├───infra
+│   └───orchestrator
+│       ├───tests
+│       └───utils
+└───frontend
+    ├───assets
+    ├───components
+    ├───lib
+    │   └───screens
+    ├───models
+    └───services
+
+C:\Users\kennyp77\Desktop\Ai dev factory>dir /s
+ Volume in drive C is Windows
+ Volume Serial Number is 8641-CAA6
+
+ Directory of C:\Users\kennyp77\Desktop\Ai dev factory
+
+06/06/2025  09:06 PM    <DIR>          .
+06/06/2025  02:23 PM    <DIR>          ..
+06/06/2025  04:50 PM    <DIR>          backend
+06/06/2025  04:45 PM           729,910 deepseek_mermaid_20250606_177a4b.png
+06/06/2025  04:45 PM           203,072 deepseek_mermaid_20250606_415ec7.png
+06/06/2025  02:57 PM           548,536 deepseek_mermaid_20250606_d3eb06.png
+06/06/2025  04:38 PM         1,651,239 deepseek_mermaid_20250606_e6a7cb.png
+06/06/2025  04:38 PM           108,536 deepseek_mermaid_20250606_e6b95c.png
+06/06/2025  02:28 PM    <DIR>          frontend
+06/06/2025  09:06 PM             6,144 note.txt
+06/06/2025  08:48 PM             3,330 tree.txt
+               7 File(s)      3,250,767 bytes
+
+ Directory of C:\Users\kennyp77\Desktop\Ai dev factory\backend
+
+06/06/2025  04:50 PM    <DIR>          .
+06/06/2025  09:06 PM    <DIR>          ..
+06/06/2025  02:49 PM    <DIR>          agents
+06/06/2025  04:55 PM    <DIR>          functions
+06/06/2025  05:17 PM    <DIR>          infra
+06/06/2025  04:43 PM    <DIR>          orchestrator
+               0 File(s)              0 bytes
+
+ Directory of C:\Users\kennyp77\Desktop\Ai dev factory\backend\agents
+
+06/06/2025  02:49 PM    <DIR>          .
+06/06/2025  04:50 PM    <DIR>          ..
+06/06/2025  03:47 PM    <DIR>          backend_agent
+06/06/2025  03:19 PM    <DIR>          frontend_agent
+06/06/2025  04:34 PM    <DIR>          infra_agent
+06/06/2025  04:33 PM    <DIR>          qa_agent
+               0 File(s)              0 bytes
+
+ Directory of C:\Users\kennyp77\Desktop\Ai dev factory\backend\agents\backend_agent
+
+06/06/2025  03:47 PM    <DIR>          .
+06/06/2025  02:49 PM    <DIR>          ..
+06/06/2025  05:35 PM             5,368 agent_logic.py
+06/06/2025  05:35 PM               610 Dockerfile
+06/06/2025  03:33 PM    <DIR>          framework_templates
+06/06/2025  03:26 PM             1,295 gemini_handler.py
+06/06/2025  05:35 PM               956 main.py
+06/06/2025  05:35 PM               140 requirements.txt
+06/06/2025  03:47 PM    <DIR>          test
+06/06/2025  03:47 PM    <DIR>          utils
+06/06/2025  03:32 PM    <DIR>          validation
+               5 File(s)          8,369 bytes
+
+ Directory of C:\Users\kennyp77\Desktop\Ai dev factory\backend\agents\backend_agent\framework_templates
+
+06/06/2025  03:33 PM    <DIR>          .
+06/06/2025  03:47 PM    <DIR>          ..
+06/06/2025  03:37 PM    <DIR>          nodejs
+06/06/2025  03:34 PM    <DIR>          python
+               0 File(s)              0 bytes
+
+ Directory of C:\Users\kennyp77\Desktop\Ai dev factory\backend\agents\backend_agent\framework_templates\nodejs
+
+06/06/2025  03:37 PM    <DIR>          .
+06/06/2025  03:33 PM    <DIR>          ..
+06/06/2025  03:39 PM    <DIR>          express
+06/06/2025  03:37 PM    <DIR>          nestjs
+               0 File(s)              0 bytes
+
+ Directory of C:\Users\kennyp77\Desktop\Ai dev factory\backend\agents\backend_agent\framework_templates\nodejs\express
+
+06/06/2025  03:39 PM    <DIR>          .
+06/06/2025  03:37 PM    <DIR>          ..
+06/06/2025  03:35 PM    <DIR>          base
+06/06/2025  03:55 PM    <DIR>          snippets
+               0 File(s)              0 bytes
+
+ Directory of C:\Users\kennyp77\Desktop\Ai dev factory\backend\agents\backend_agent\framework_templates\nodejs\express\base
+
+06/06/2025  03:35 PM    <DIR>          .
+06/06/2025  03:39 PM    <DIR>          ..
+06/06/2025  05:35 PM               541 package.json
+06/06/2025  03:51 PM    <DIR>          src
+               1 File(s)            541 bytes
+
+ Directory of C:\Users\kennyp77\Desktop\Ai dev factory\backend\agents\backend_agent\framework_templates\nodejs\express\base\src
+
+06/06/2025  03:51 PM    <DIR>          .
+06/06/2025  03:35 PM    <DIR>          ..
+06/06/2025  05:35 PM               695 app.js
+06/06/2025  03:54 PM    <DIR>          routes
+               1 File(s)            695 bytes
+
+ Directory of C:\Users\kennyp77\Desktop\Ai dev factory\backend\agents\backend_agent\framework_templates\nodejs\express\base\src\routes
+
+06/06/2025  03:54 PM    <DIR>          .
+06/06/2025  03:51 PM    <DIR>          ..
+06/06/2025  05:35 PM               250 health.js
+06/06/2025  05:35 PM               280 index.js
+               2 File(s)            530 bytes
+
+ Directory of C:\Users\kennyp77\Desktop\Ai dev factory\backend\agents\backend_agent\framework_templates\nodejs\express\snippets
+
+06/06/2025  03:55 PM    <DIR>          .
+06/06/2025  03:39 PM    <DIR>          ..
+06/06/2025  05:35 PM             1,785 mongodb.json
+06/06/2025  05:35 PM             2,126 swagger.json
+               2 File(s)          3,911 bytes
+
+ Directory of C:\Users\kennyp77\Desktop\Ai dev factory\backend\agents\backend_agent\framework_templates\nodejs\nestjs
+
+06/06/2025  03:37 PM    <DIR>          .
+06/06/2025  03:37 PM    <DIR>          ..
+06/06/2025  03:37 PM    <DIR>          base
+               0 File(s)              0 bytes
+
+ Directory of C:\Users\kennyp77\Desktop\Ai dev factory\backend\agents\backend_agent\framework_templates\nodejs\nestjs\base
+
+06/06/2025  03:37 PM    <DIR>          .
+06/06/2025  03:37 PM    <DIR>          ..
+06/06/2025  03:35 PM                 0 package.json
+06/06/2025  03:37 PM    <DIR>          src
+               1 File(s)              0 bytes
+
+ Directory of C:\Users\kennyp77\Desktop\Ai dev factory\backend\agents\backend_agent\framework_templates\nodejs\nestjs\base\src
+
+06/06/2025  03:37 PM    <DIR>          .
+06/06/2025  03:37 PM    <DIR>          ..
+06/06/2025  03:37 PM    <DIR>          app.js
+               0 File(s)              0 bytes
+
+ Directory of C:\Users\kennyp77\Desktop\Ai dev factory\backend\agents\backend_agent\framework_templates\nodejs\nestjs\base\src\app.js
+
+06/06/2025  03:37 PM    <DIR>          .
+06/06/2025  03:37 PM    <DIR>          ..
+06/06/2025  03:35 PM    <DIR>          routes
+               0 File(s)              0 bytes
+
+ Directory of C:\Users\kennyp77\Desktop\Ai dev factory\backend\agents\backend_agent\framework_templates\nodejs\nestjs\base\src\app.js\routes
+
+06/06/2025  03:35 PM    <DIR>          .
+06/06/2025  03:37 PM    <DIR>          ..
+               0 File(s)              0 bytes
+
+ Directory of C:\Users\kennyp77\Desktop\Ai dev factory\backend\agents\backend_agent\framework_templates\python
+
+06/06/2025  03:34 PM    <DIR>          .
+06/06/2025  03:33 PM    <DIR>          ..
+06/06/2025  03:34 PM    <DIR>          django
+06/06/2025  03:34 PM    <DIR>          fastapi
+               0 File(s)              0 bytes
+
+ Directory of C:\Users\kennyp77\Desktop\Ai dev factory\backend\agents\backend_agent\framework_templates\python\django
+
+06/06/2025  03:34 PM    <DIR>          .
+06/06/2025  03:34 PM    <DIR>          ..
+06/06/2025  04:03 PM    <DIR>          base
+06/06/2025  04:03 PM    <DIR>          snippets
+               0 File(s)              0 bytes
+
+ Directory of C:\Users\kennyp77\Desktop\Ai dev factory\backend\agents\backend_agent\framework_templates\python\django\base
+
+06/06/2025  04:03 PM    <DIR>          .
+06/06/2025  03:34 PM    <DIR>          ..
+06/06/2025  05:35 PM               452 manage.py
+06/06/2025  05:35 PM                88 requirements.txt
+06/06/2025  04:03 PM    <DIR>          {{project_name}}
+               2 File(s)            540 bytes
+
+ Directory of C:\Users\kennyp77\Desktop\Ai dev factory\backend\agents\backend_agent\framework_templates\python\django\base\{{project_name}}
+
+06/06/2025  04:03 PM    <DIR>          .
+06/06/2025  04:03 PM    <DIR>          ..
+06/06/2025  05:35 PM             2,591 settings.py
+               1 File(s)          2,591 bytes
+
+ Directory of C:\Users\kennyp77\Desktop\Ai dev factory\backend\agents\backend_agent\framework_templates\python\django\snippets
+
+06/06/2025  04:03 PM    <DIR>          .
+06/06/2025  03:34 PM    <DIR>          ..
+06/06/2025  04:03 PM             1,056 celery_tasks.json
+06/06/2025  05:35 PM             1,190 drf_apis.json
+               2 File(s)          2,246 bytes
+
+ Directory of C:\Users\kennyp77\Desktop\Ai dev factory\backend\agents\backend_agent\framework_templates\python\fastapi
+
+06/06/2025  03:34 PM    <DIR>          .
+06/06/2025  03:34 PM    <DIR>          ..
+06/06/2025  03:58 PM    <DIR>          base
+06/06/2025  04:00 PM    <DIR>          snippets
+               0 File(s)              0 bytes
+
+ Directory of C:\Users\kennyp77\Desktop\Ai dev factory\backend\agents\backend_agent\framework_templates\python\fastapi\base
+
+06/06/2025  03:58 PM    <DIR>          .
+06/06/2025  03:34 PM    <DIR>          ..
+06/06/2025  03:58 PM    <DIR>          api
+06/06/2025  05:35 PM               719 main.py
+06/06/2025  03:57 PM    <DIR>          models
+06/06/2025  05:35 PM               105 requirements.txt
+               2 File(s)            824 bytes
+
+ Directory of C:\Users\kennyp77\Desktop\Ai dev factory\backend\agents\backend_agent\framework_templates\python\fastapi\base\api
+
+06/06/2025  03:58 PM    <DIR>          .
+06/06/2025  03:58 PM    <DIR>          ..
+06/06/2025  03:58 PM    <DIR>          v1
+               0 File(s)              0 bytes
+
+ Directory of C:\Users\kennyp77\Desktop\Ai dev factory\backend\agents\backend_agent\framework_templates\python\fastapi\base\api\v1
+
+06/06/2025  03:58 PM    <DIR>          .
+06/06/2025  03:58 PM    <DIR>          ..
+06/06/2025  03:58 PM    <DIR>          endpoints
+06/06/2025  05:35 PM               227 routers.py
+               1 File(s)            227 bytes
+
+ Directory of C:\Users\kennyp77\Desktop\Ai dev factory\backend\agents\backend_agent\framework_templates\python\fastapi\base\api\v1\endpoints
+
+06/06/2025  03:58 PM    <DIR>          .
+06/06/2025  03:58 PM    <DIR>          ..
+               0 File(s)              0 bytes
+
+ Directory of C:\Users\kennyp77\Desktop\Ai dev factory\backend\agents\backend_agent\framework_templates\python\fastapi\base\models
+
+06/06/2025  03:57 PM    <DIR>          .
+06/06/2025  03:58 PM    <DIR>          ..
+06/06/2025  05:35 PM               172 base.py
+               1 File(s)            172 bytes
+
+ Directory of C:\Users\kennyp77\Desktop\Ai dev factory\backend\agents\backend_agent\framework_templates\python\fastapi\snippets
+
+06/06/2025  04:00 PM    <DIR>          .
+06/06/2025  03:34 PM    <DIR>          ..
+06/06/2025  05:35 PM             1,332 jwt_auth.json
+06/06/2025  05:35 PM               942 openapi_schema.json
+06/06/2025  05:35 PM             1,003 redis_cache.json
+06/06/2025  05:35 PM             1,751 sqlalchemy_crud.json
+               4 File(s)          5,028 bytes
+
+ Directory of C:\Users\kennyp77\Desktop\Ai dev factory\backend\agents\backend_agent\test
+
+06/06/2025  03:47 PM    <DIR>          .
+06/06/2025  03:47 PM    <DIR>          ..
+06/06/2025  05:35 PM               638 test_agent_logic.py
+06/06/2025  03:47 PM                 0 test_nodejs_validator.py
+06/06/2025  05:35 PM               808 test_python_validator.py
+               3 File(s)          1,446 bytes
+
+ Directory of C:\Users\kennyp77\Desktop\Ai dev factory\backend\agents\backend_agent\utils
+
+06/06/2025  03:47 PM    <DIR>          .
+06/06/2025  03:47 PM    <DIR>          ..
+06/06/2025  05:35 PM               610 docker_utils.py
+06/06/2025  05:35 PM             1,198 error_handler.py
+06/06/2025  05:35 PM               857 template_loader.py
+               3 File(s)          2,665 bytes
+
+ Directory of C:\Users\kennyp77\Desktop\Ai dev factory\backend\agents\backend_agent\validation
+
+06/06/2025  03:32 PM    <DIR>          .
+06/06/2025  03:47 PM    <DIR>          ..
+06/06/2025  05:35 PM             1,864 nodejs_validator.py
+06/06/2025  05:35 PM             1,809 python_validator.py
+               2 File(s)          3,673 bytes
+
+ Directory of C:\Users\kennyp77\Desktop\Ai dev factory\backend\agents\frontend_agent
+
+06/06/2025  03:19 PM    <DIR>          .
+06/06/2025  02:49 PM    <DIR>          ..
+06/06/2025  03:28 PM             4,494 agent_logic.py
+06/06/2025  03:26 PM             1,046 Dockerfile
+06/06/2025  03:20 PM    <DIR>          framework_templates
+06/06/2025  03:26 PM             8,716 gemini_handler.py
+06/06/2025  03:26 PM             1,714 main.py
+06/06/2025  03:26 PM               130 requirements.txt
+06/06/2025  03:10 PM    <DIR>          utils
+06/06/2025  03:15 PM    <DIR>          validation
+               5 File(s)         16,100 bytes
+
+ Directory of C:\Users\kennyp77\Desktop\Ai dev factory\backend\agents\frontend_agent\framework_templates
+
+06/06/2025  03:20 PM    <DIR>          .
+06/06/2025  03:19 PM    <DIR>          ..
+06/06/2025  03:22 PM    <DIR>          flutter
+06/06/2025  03:23 PM    <DIR>          react
+               0 File(s)              0 bytes
+
+ Directory of C:\Users\kennyp77\Desktop\Ai dev factory\backend\agents\frontend_agent\framework_templates\flutter
+
+06/06/2025  03:22 PM    <DIR>          .
+06/06/2025  03:20 PM    <DIR>          ..
+06/06/2025  03:20 PM    <DIR>          base
+06/06/2025  03:22 PM    <DIR>          snippets
+               0 File(s)              0 bytes
+
+ Directory of C:\Users\kennyp77\Desktop\Ai dev factory\backend\agents\frontend_agent\framework_templates\flutter\base
+
+06/06/2025  03:20 PM    <DIR>          .
+06/06/2025  03:22 PM    <DIR>          ..
+06/06/2025  03:20 PM    <DIR>          lib
+06/06/2025  03:26 PM               413 pubspec.yaml
+               1 File(s)            413 bytes
+
+ Directory of C:\Users\kennyp77\Desktop\Ai dev factory\backend\agents\frontend_agent\framework_templates\flutter\base\lib
+
+06/06/2025  03:20 PM    <DIR>          .
+06/06/2025  03:20 PM    <DIR>          ..
+06/06/2025  03:26 PM               995 main.dart
+               1 File(s)            995 bytes
+
+ Directory of C:\Users\kennyp77\Desktop\Ai dev factory\backend\agents\frontend_agent\framework_templates\flutter\snippets
+
+06/06/2025  03:22 PM    <DIR>          .
+06/06/2025  03:22 PM    <DIR>          ..
+06/06/2025  03:26 PM             1,158 responsive_ui.json
+06/06/2025  03:26 PM             1,236 state_management.json
+               2 File(s)          2,394 bytes
+
+ Directory of C:\Users\kennyp77\Desktop\Ai dev factory\backend\agents\frontend_agent\framework_templates\react
+
+06/06/2025  03:23 PM    <DIR>          .
+06/06/2025  03:20 PM    <DIR>          ..
+06/06/2025  03:24 PM    <DIR>          base
+06/06/2025  03:23 PM    <DIR>          snippets
+               0 File(s)              0 bytes
+
+ Directory of C:\Users\kennyp77\Desktop\Ai dev factory\backend\agents\frontend_agent\framework_templates\react\base
+
+06/06/2025  03:24 PM    <DIR>          .
+06/06/2025  03:23 PM    <DIR>          ..
+06/06/2025  03:26 PM               454 package.json
+06/06/2025  03:24 PM    <DIR>          src
+               1 File(s)            454 bytes
+
+ Directory of C:\Users\kennyp77\Desktop\Ai dev factory\backend\agents\frontend_agent\framework_templates\react\base\src
+
+06/06/2025  03:24 PM    <DIR>          .
+06/06/2025  03:24 PM    <DIR>          ..
+06/06/2025  03:26 PM               533 App.js
+               1 File(s)            533 bytes
+
+ Directory of C:\Users\kennyp77\Desktop\Ai dev factory\backend\agents\frontend_agent\framework_templates\react\snippets
+
+06/06/2025  03:23 PM    <DIR>          .
+06/06/2025  03:23 PM    <DIR>          ..
+06/06/2025  03:26 PM               877 hooks.json
+06/06/2025  03:26 PM               914 styled_components.json
+               2 File(s)          1,791 bytes
+
+ Directory of C:\Users\kennyp77\Desktop\Ai dev factory\backend\agents\frontend_agent\utils
+
+06/06/2025  03:10 PM    <DIR>          .
+06/06/2025  03:19 PM    <DIR>          ..
+06/06/2025  03:10 PM                 0 error_handler.py
+06/06/2025  03:26 PM               817 file_generator.py
+               2 File(s)            817 bytes
+
+ Directory of C:\Users\kennyp77\Desktop\Ai dev factory\backend\agents\frontend_agent\validation
+
+06/06/2025  03:15 PM    <DIR>          .
+06/06/2025  03:19 PM    <DIR>          ..
+06/06/2025  03:26 PM             1,728 flutter_validator.py
+06/06/2025  03:26 PM             3,725 react_validator.py
+               2 File(s)          5,453 bytes
+
+ Directory of C:\Users\kennyp77\Desktop\Ai dev factory\backend\agents\infra_agent
+
+06/06/2025  04:34 PM    <DIR>          .
+06/06/2025  02:49 PM    <DIR>          ..
+06/06/2025  04:25 PM                68 .env
+06/06/2025  05:35 PM             5,346 agent_logic.py
+06/06/2025  04:33 PM           358,594 digram.png
+06/06/2025  05:35 PM               581 Dockerfile
+06/06/2025  05:35 PM               940 main.py
+06/06/2025  05:35 PM                95 requirements.txt
+06/06/2025  04:09 PM    <DIR>          templates
+06/06/2025  04:24 PM    <DIR>          utils
+06/06/2025  04:15 PM    <DIR>          validation
+               6 File(s)        365,624 bytes
+
+ Directory of C:\Users\kennyp77\Desktop\Ai dev factory\backend\agents\infra_agent\templates
+
+06/06/2025  04:09 PM    <DIR>          .
+06/06/2025  04:34 PM    <DIR>          ..
+06/06/2025  04:11 PM    <DIR>          aws
+06/06/2025  04:13 PM    <DIR>          azure
+06/06/2025  04:13 PM    <DIR>          gcp
+               0 File(s)              0 bytes
+
+ Directory of C:\Users\kennyp77\Desktop\Ai dev factory\backend\agents\infra_agent\templates\aws
+
+06/06/2025  04:11 PM    <DIR>          .
+06/06/2025  04:09 PM    <DIR>          ..
+06/06/2025  04:12 PM    <DIR>          pipelines
+06/06/2025  04:12 PM    <DIR>          terraform
+               0 File(s)              0 bytes
+
+ Directory of C:\Users\kennyp77\Desktop\Ai dev factory\backend\agents\infra_agent\templates\aws\pipelines
+
+06/06/2025  04:12 PM    <DIR>          .
+06/06/2025  04:11 PM    <DIR>          ..
+06/06/2025  04:12 PM                 0 github-actions.yml
+               1 File(s)              0 bytes
+
+ Directory of C:\Users\kennyp77\Desktop\Ai dev factory\backend\agents\infra_agent\templates\aws\terraform
+
+06/06/2025  04:12 PM    <DIR>          .
+06/06/2025  04:11 PM    <DIR>          ..
+06/06/2025  05:35 PM               598 cloudfront.tf
+06/06/2025  05:35 PM             1,019 ecs.tf
+06/06/2025  05:35 PM               940 rds.tf
+06/06/2025  05:35 PM               832 s3.tf
+               4 File(s)          3,389 bytes
+
+ Directory of C:\Users\kennyp77\Desktop\Ai dev factory\backend\agents\infra_agent\templates\azure
+
+06/06/2025  04:13 PM    <DIR>          .
+06/06/2025  04:09 PM    <DIR>          ..
+06/06/2025  04:10 PM    <DIR>          bicep
+06/06/2025  04:19 PM    <DIR>          pipelines
+               0 File(s)              0 bytes
+
+ Directory of C:\Users\kennyp77\Desktop\Ai dev factory\backend\agents\infra_agent\templates\azure\bicep
+
+06/06/2025  04:10 PM    <DIR>          .
+06/06/2025  04:13 PM    <DIR>          ..
+06/06/2025  05:35 PM               587 app_service.bicep
+06/06/2025  05:35 PM             1,763 container_app.bicep
+06/06/2025  05:35 PM               703 cosmos_db.bicep
+06/06/2025  05:35 PM               955 key_vault.bicep
+               4 File(s)          4,008 bytes
+
+ Directory of C:\Users\kennyp77\Desktop\Ai dev factory\backend\agents\infra_agent\templates\azure\pipelines
+
+06/06/2025  04:19 PM    <DIR>          .
+06/06/2025  04:13 PM    <DIR>          ..
+06/06/2025  05:35 PM               530 azure-pipelines.yml
+06/06/2025  05:35 PM               570 github-actions.yml
+               2 File(s)          1,100 bytes
+
+ Directory of C:\Users\kennyp77\Desktop\Ai dev factory\backend\agents\infra_agent\templates\gcp
+
+06/06/2025  04:13 PM    <DIR>          .
+06/06/2025  04:09 PM    <DIR>          ..
+06/06/2025  04:13 PM    <DIR>          pipelines
+06/06/2025  04:14 PM    <DIR>          terraform
+               0 File(s)              0 bytes
+
+ Directory of C:\Users\kennyp77\Desktop\Ai dev factory\backend\agents\infra_agent\templates\gcp\pipelines
+
+06/06/2025  04:13 PM    <DIR>          .
+06/06/2025  04:13 PM    <DIR>          ..
+06/06/2025  05:35 PM               690 cloudbuild.yml
+               1 File(s)            690 bytes
+
+ Directory of C:\Users\kennyp77\Desktop\Ai dev factory\backend\agents\infra_agent\templates\gcp\terraform
+
+06/06/2025  04:14 PM    <DIR>          .
+06/06/2025  04:13 PM    <DIR>          ..
+06/06/2025  05:35 PM               893 cloud_run.tf
+06/06/2025  04:14 PM                 0 cloud_sql.tf
+06/06/2025  04:14 PM                 0 cloud_storage.tf
+06/06/2025  05:35 PM               668 gke.tf
+               4 File(s)          1,561 bytes
+
+ Directory of C:\Users\kennyp77\Desktop\Ai dev factory\backend\agents\infra_agent\utils
+
+06/06/2025  04:24 PM    <DIR>          .
+06/06/2025  04:34 PM    <DIR>          ..
+06/06/2025  05:35 PM             2,751 config_parser.py
+               1 File(s)          2,751 bytes
+
+ Directory of C:\Users\kennyp77\Desktop\Ai dev factory\backend\agents\infra_agent\validation
+
+06/06/2025  04:15 PM    <DIR>          .
+06/06/2025  04:34 PM    <DIR>          ..
+06/06/2025  05:35 PM             1,513 bicep_validator.py
+06/06/2025  05:35 PM             2,312 terraform_validator.py
+               2 File(s)          3,825 bytes
+
+ Directory of C:\Users\kennyp77\Desktop\Ai dev factory\backend\agents\qa_agent
+
+06/06/2025  04:33 PM    <DIR>          .
+06/06/2025  02:49 PM    <DIR>          ..
+06/06/2025  05:35 PM             3,380 agent_logic.py
+06/06/2025  05:35 PM               436 Dockerfile
+06/06/2025  05:35 PM               686 main.py
+06/06/2025  05:35 PM               144 requirements.txt
+06/06/2025  04:30 PM    <DIR>          templates
+06/06/2025  04:29 PM    <DIR>          tools
+06/06/2025  04:33 PM    <DIR>          utils
+               4 File(s)          4,646 bytes
+
+ Directory of C:\Users\kennyp77\Desktop\Ai dev factory\backend\agents\qa_agent\templates
+
+06/06/2025  04:30 PM    <DIR>          .
+06/06/2025  04:33 PM    <DIR>          ..
+06/06/2025  04:30 PM    <DIR>          test_suites
+               0 File(s)              0 bytes
+
+ Directory of C:\Users\kennyp77\Desktop\Ai dev factory\backend\agents\qa_agent\templates\test_suites
+
+06/06/2025  04:30 PM    <DIR>          .
+06/06/2025  04:30 PM    <DIR>          ..
+06/06/2025  04:31 PM    <DIR>          javascript
+06/06/2025  04:30 PM    <DIR>          python
+               0 File(s)              0 bytes
+
+ Directory of C:\Users\kennyp77\Desktop\Ai dev factory\backend\agents\qa_agent\templates\test_suites\javascript
+
+06/06/2025  04:31 PM    <DIR>          .
+06/06/2025  04:30 PM    <DIR>          ..
+06/06/2025  04:31 PM                 0 jest_template.js
+               1 File(s)              0 bytes
+
+ Directory of C:\Users\kennyp77\Desktop\Ai dev factory\backend\agents\qa_agent\templates\test_suites\python
+
+06/06/2025  04:30 PM    <DIR>          .
+06/06/2025  04:30 PM    <DIR>          ..
+06/06/2025  05:35 PM               543 pytest_template.py
+               1 File(s)            543 bytes
+
+ Directory of C:\Users\kennyp77\Desktop\Ai dev factory\backend\agents\qa_agent\tools
+
+06/06/2025  04:29 PM    <DIR>          .
+06/06/2025  04:33 PM    <DIR>          ..
+06/06/2025  05:35 PM             2,984 performance_tester.py
+06/06/2025  05:35 PM             2,110 report_generator.py
+06/06/2025  05:35 PM             2,627 security_scanner.py
+06/06/2025  05:35 PM             2,536 test_runner.py
+               4 File(s)         10,257 bytes
+
+ Directory of C:\Users\kennyp77\Desktop\Ai dev factory\backend\agents\qa_agent\utils
+
+06/06/2025  04:33 PM    <DIR>          .
+06/06/2025  04:33 PM    <DIR>          ..
+06/06/2025  04:33 PM             1,216 error_handler.py
+               1 File(s)          1,216 bytes
+
+ Directory of C:\Users\kennyp77\Desktop\Ai dev factory\backend\functions
+
+06/06/2025  04:55 PM    <DIR>          .
+06/06/2025  04:50 PM    <DIR>          ..
+06/06/2025  04:55 PM    <DIR>          submitFeedback
+               0 File(s)              0 bytes
+
+ Directory of C:\Users\kennyp77\Desktop\Ai dev factory\backend\functions\submitFeedback
+
+06/06/2025  04:55 PM    <DIR>          .
+06/06/2025  04:55 PM    <DIR>          ..
+               0 File(s)              0 bytes
+
+ Directory of C:\Users\kennyp77\Desktop\Ai dev factory\backend\infra
+
+06/06/2025  05:17 PM    <DIR>          .
+06/06/2025  04:50 PM    <DIR>          ..
+06/06/2025  05:35 PM             2,837 main.py
+06/06/2025  03:26 PM             1,002 resources.bicep
+               2 File(s)          3,839 bytes
+
+ Directory of C:\Users\kennyp77\Desktop\Ai dev factory\backend\orchestrator
+
+06/06/2025  04:43 PM    <DIR>          .
+06/06/2025  04:50 PM    <DIR>          ..
+06/06/2025  05:35 PM             1,708 agent_coordinator.py
+06/06/2025  05:35 PM             1,837 database.py
+06/06/2025  05:35 PM             1,703 error_handler.py
+06/06/2025  05:35 PM             1,942 job_scheduler.py
+06/06/2025  05:35 PM             1,592 main.py
+06/06/2025  05:35 PM               981 models.py
+06/06/2025  04:49 PM    <DIR>          tests
+06/06/2025  04:48 PM    <DIR>          utils
+06/06/2025  05:35 PM             1,631 workflow_manager.py
+               7 File(s)         11,394 bytes
+
+ Directory of C:\Users\kennyp77\Desktop\Ai dev factory\backend\orchestrator\tests
+
+06/06/2025  04:49 PM    <DIR>          .
+06/06/2025  04:43 PM    <DIR>          ..
+06/06/2025  04:44 PM                 0 test_agent_coordination.py
+06/06/2025  05:35 PM               670 test_cache.py
+06/06/2025  05:35 PM               699 test_security.py
+06/06/2025  05:35 PM             1,633 test_workflows.py
+               4 File(s)          3,002 bytes
+
+ Directory of C:\Users\kennyp77\Desktop\Ai dev factory\backend\orchestrator\utils
+
+06/06/2025  04:48 PM    <DIR>          .
+06/06/2025  04:43 PM    <DIR>          ..
+06/06/2025  04:43 PM                 0 artifact_integrator.py
+06/06/2025  05:35 PM               869 cache.py
+06/06/2025  04:43 PM                 0 cost_calculator.py
+06/06/2025  05:35 PM               885 error_handler.py
+06/06/2025  05:35 PM             2,074 security.py
+06/06/2025  04:43 PM                 0 state_manager.py
+               6 File(s)          3,828 bytes
+
+ Directory of C:\Users\kennyp77\Desktop\Ai dev factory\frontend
+
+06/06/2025  02:28 PM    <DIR>          .
+06/06/2025  09:06 PM    <DIR>          ..
+06/06/2025  02:29 PM    <DIR>          assets
+06/06/2025  02:26 PM    <DIR>          components
+06/06/2025  02:23 PM    <DIR>          lib
+06/06/2025  02:27 PM    <DIR>          models
+06/06/2025  02:28 PM    <DIR>          services
+               0 File(s)              0 bytes
+
+ Directory of C:\Users\kennyp77\Desktop\Ai dev factory\frontend\assets
+
+06/06/2025  02:29 PM    <DIR>          .
+06/06/2025  02:28 PM    <DIR>          ..
+06/06/2025  02:29 PM                 0 pubspec.yaml
+               1 File(s)              0 bytes
+
+ Directory of C:\Users\kennyp77\Desktop\Ai dev factory\frontend\components
+
+06/06/2025  02:26 PM    <DIR>          .
+06/06/2025  02:28 PM    <DIR>          ..
+06/06/2025  02:25 PM                 0 feedback_form.dart.dart
+06/06/2025  02:25 PM                 0 output_selector.dart.dart
+06/06/2025  02:25 PM                 0 prompt_input.dart
+06/06/2025  02:25 PM                 0 workspace_diff_viewer.dart
+               4 File(s)              0 bytes
+
+ Directory of C:\Users\kennyp77\Desktop\Ai dev factory\frontend\lib
+
+06/06/2025  02:23 PM    <DIR>          .
+06/06/2025  02:28 PM    <DIR>          ..
+06/06/2025  02:27 PM    <DIR>          screens
+               0 File(s)              0 bytes
+
+ Directory of C:\Users\kennyp77\Desktop\Ai dev factory\frontend\lib\screens
+
+06/06/2025  02:27 PM    <DIR>          .
+06/06/2025  02:23 PM    <DIR>          ..
+06/06/2025  02:24 PM                 0 agent_selector.dart .dart
+06/06/2025  02:24 PM                 0 home_screen copy 4.dart
+06/06/2025  02:24 PM                 0 home_screen.dart
+06/06/2025  02:24 PM                 0 job_viewer.dart.dart
+06/06/2025  02:24 PM                 0 logs_screen.dart.dart
+               5 File(s)              0 bytes
+
+ Directory of C:\Users\kennyp77\Desktop\Ai dev factory\frontend\models
+
+06/06/2025  02:27 PM    <DIR>          .
+06/06/2025  02:28 PM    <DIR>          ..
+06/06/2025  02:27 PM                 0 agent_model.dart
+06/06/2025  02:27 PM                 0 feedback_model.dart
+06/06/2025  02:27 PM                 0 job_model.dart
+               3 File(s)              0 bytes
+
+ Directory of C:\Users\kennyp77\Desktop\Ai dev factory\frontend\services
+
+06/06/2025  02:28 PM    <DIR>          .
+06/06/2025  02:28 PM    <DIR>          ..
+06/06/2025  02:28 PM                 0 api_service.dart
+06/06/2025  02:28 PM                 0 deployment_service.dart
+06/06/2025  02:28 PM                 0 state_service.dart
+               3 File(s)              0 bytes
+
+     Total Files Listed:
+             128 File(s)      3,734,848 bytes
+             227 Dir(s)  18,617,847,808 bytes free
+
+C:\Users\kennyp77\Desktop\Ai dev factory>

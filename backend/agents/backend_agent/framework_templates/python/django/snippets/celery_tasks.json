@@ -1,0 +1,30 @@
+{
+    "celery_setup": {
+      "description": "Celery task queue configuration",
+      "files": [
+        {
+          "path": "{{project_name}}/celery.py",
+          "content": "import os\nfrom celery import Celery\n\nos.environ.setdefault('DJANGO_SETTINGS_MODULE', '{{project_name}}.settings')\n\napp = Celery('{{project_name}}')\napp.config_from_object('django.conf:settings', namespace='CELERY')\napp.autodiscover_tasks()"
+        },
+        {
+          "path": "{{project_name}}/__init__.py",
+          "content": "from .celery import app as celery_app\n\n__all__ = ('celery_app',)"
+        },
+        {
+          "path": "{{project_name}}/settings.py",
+          "modify": {
+            "insert_at": "INSTALLED_APPS = [",
+            "content": "'django_celery_results',"
+          }
+        }
+      ],
+      "dependencies": {
+        "celery": "5.3.4",
+        "django-celery-results": "2.5.1",
+        "redis": "4.6.0"
+      },
+      "env_vars": {
+        "CELERY_BROKER_URL": "redis://localhost:6379/0"
+      }
+    }
+  }

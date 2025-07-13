@@ -1,0 +1,17 @@
+{
+    "openapi_docs": {
+      "description": "OpenAPI/Swagger documentation setup",
+      "files": [
+        {
+          "path": "app/schemas.py",
+          "content": "from pydantic import BaseModel\n\nclass HTTPError(BaseModel):\n    detail: str\n\n    class Config:\n        schema_extra = {\n            \"example\": {\"detail\": \"Error message\"}\n        }"
+        },
+        {
+          "path": "app/main.py",
+          "insert_at": "app = FastAPI()",
+          "content": "from fastapi.openapi.utils import get_openapi\n\ndef custom_openapi():\n    if app.openapi_schema:\n        return app.openapi_schema\n    openapi_schema = get_openapi(\n        title=\"{{app_name}}\",\n        version=\"1.0.0\",\n        routes=app.routes,\n    )\n    app.openapi_schema = openapi_schema\n    return app.openapi_schema\n\napp.openapi = custom_openapi"
+        }
+      ],
+      "dependencies": ["fastapi", "uvicorn"]
+    }
+  }

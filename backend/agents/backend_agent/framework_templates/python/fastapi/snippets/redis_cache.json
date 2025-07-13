@@ -1,0 +1,18 @@
+{
+    "redis_cache": {
+      "description": "Redis caching layer with connection pooling",
+      "files": [
+        {
+          "path": "services/redis.py",
+          "content": "import redis.asyncio as redis\nfrom contextlib import asynccontextmanager\n\nREDIS_URL = 'redis://localhost:6379'\n\npool = redis.ConnectionPool.from_url(\n    REDIS_URL,\n    max_connections=10,\n    decode_responses=True\n)\n\n@asynccontextmanager\nasync def get_redis():\n    client = redis.Redis(connection_pool=pool)\n    try:\n        yield client\n    finally:\n        await client.close()"
+        },
+        {
+          "path": "api/v1/endpoints/cache.py",
+          "content": "from fastapi import APIRouter, Depends\nfrom services.redis import get_redis\n\nrouter = APIRouter(prefix='/cache')\n\n@router.get('/{key}')\nasync def get_cache(key: str, redis=Depends(get_redis)):\n    return await redis.get(key)"
+        }
+      ],
+      "dependencies": {
+        "redis": "4.6.0"
+      }
+    }
+  }

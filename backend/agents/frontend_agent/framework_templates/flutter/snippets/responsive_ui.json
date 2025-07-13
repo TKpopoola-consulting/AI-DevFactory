@@ -1,0 +1,11 @@
+{
+    "responsive_layout": {
+      "description": "Adaptive layout for mobile/tablet/desktop",
+      "files": [
+        {
+          "path": "lib/widgets/responsive_layout.dart",
+          "content": "import 'package:flutter/material.dart';\n\nclass ResponsiveLayout extends StatelessWidget {\n  final Widget mobile;\n  final Widget tablet;\n  final Widget desktop;\n\n  const ResponsiveLayout({\n    required this.mobile,\n    required this.tablet,\n    required this.desktop,\n    super.key\n  });\n\n  static bool isMobile(BuildContext context) =>\n      MediaQuery.of(context).size.width < 600;\n\n  static bool isTablet(BuildContext context) =>\n      MediaQuery.of(context).size.width < 1100 &&\n      MediaQuery.of(context).size.width >= 600;\n\n  static bool isDesktop(BuildContext context) =>\n      MediaQuery.of(context).size.width >= 1100;\n\n  @override\n  Widget build(BuildContext context) {\n    return LayoutBuilder(\n      builder: (context, constraints) {\n        if (isDesktop(context)) return desktop;\n        if (isTablet(context)) return tablet;\n        return mobile;\n      },\n    );\n  }\n}"
+        }
+      ]
+    }
+  }

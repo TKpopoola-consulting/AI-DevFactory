@@ -1,0 +1,256 @@
+We are building an AI-powered application development platform called **AI DevFactory**. The system takes natural language prompts and automatically generates full-stack applications (frontend, backend, infrastructure, and deployment pipelines).
+
+The original design used Firebase for the backend, but the user is now asking about using Azure instead. Let's restructure the backend for Azure.
+
+### Key Components to Re-architect for Azure:
+
+1. **Authentication**: Replace Firebase Authentication with Azure Active Directory (Azure AD) or Azure B2C.
+
+2. **Database**: Replace Firestore with Azure Cosmos DB (NoSQL) or Azure SQL Database.
+
+3. **Cloud Functions**: Replace Firebase Cloud Functions with Azure Functions.
+
+4. **File Storage**: Replace Firebase Cloud Storage with Azure Blob Storage.
+
+5. **Hosting**: Replace Firebase Hosting with Azure Static Web Apps or Azure App Service.
+
+6. **Orchestration and Agents**: Can be hosted on Azure Container Instances (ACI) or Azure Kubernetes Service (AKS) for containerized agents.
+### Proposed Azure Backend Structure:
+
+```
+
+/backend/
+
+/functions/ (Azure Functions)
+
+createJob/            # HTTP trigger for job creation
+
+function.json
+
+index.js (or TypeScript)
+
+submitFeedback/       # HTTP trigger for feedback
+
+getJobStatus/         # HTTP trigger for job status
+
+finalizeJob/          # HTTP trigger for finalizing job
+
+/orchestrator/ (Shared library for orchestration logic, used by functions)
+
+jobRouter.ts
+
+agentSelector.ts
+
+keyVaultHelper.ts     # Uses Azure Key Vault
+
+costOptimizer.ts
+
+/agents/ (Each agent is a containerized application)
+
+frontend_agent/       # Docker container for frontend generation
+
+Dockerfile
+
+app/ (agent code)
+
+backend_agent/        # Docker container for backend generation
+
+infra_agent/          # Docker container for infra generation
+
+qa_agent/             # Docker container for QA (future)
+
+/utils/ (Shared utilities)
+
+workspaceManager.ts   # Uses Azure Repos or GitHub for versioning
+githubClient.ts       # If using GitHub
+
+blobClient.ts         # Azure Blob Storage client
+
+errorHandler.ts
+
+/config/
+
+agents.json           # Agent configurations
+
+deployment.json       # Azure deployment config (e.g., regions, resource groups)
+
+```
+
+### Database Schema (Using Azure Cosmos DB or Azure SQL)
+
+We'll design for Cosmos DB (NoSQL) for flexibility and scalability. Collections (containers in Cosmos DB) would be:
+
+1. **Jobs Container** (Partition key: `/userId`)
+
+```json
+
+{
+
+"id": "job123", // Unique job ID
+"userId": "user1", // Partition key
+
+"createdAt": "2025-06-07T12:00:00Z",
+
+"status": "processing",
+
+"currentAgent": "frontend_agent",
+
+"outputConfig": {
+
+"platforms": ["web", "android"],
+
+"frameworks": ["flutter"],
+
+"cloudTarget": "azure"
+
+},
+
+"artifacts": {
+
+"frontend": "https://storageaccount.blob.core.windows.net/jobs/job123/frontend.zip",
+
+"backend": "...",
+
+"infra": "...",
+"buildLogs": "..."
+
+},
+
+"costMetrics": {
+
+"aiTokens": 4500,
+
+"computeSec": 120,
+
+"storageMB": 10
+
+}
+
+}
+
+```
+
+2. **Feedback Container** (Partition key: `/jobId`)
+
+```json
+
+{
+
+"id": "feedback456",
+"jobId": "job123",
+
+"content": "The generated code had a bug in the login screen.",
+
+"timestamp": "2025-06-07T12:30:00Z",
+
+"fileRefs": [
+
+"https://storageaccount.blob.core.windows.net/feedback/feedback456/screenshot.png"
+
+],
+
+"resolution": "pending"
+
+}
+
+```
+
+3. **AuditLogs Container** (Partition key: `/jobId` or `/timestamp` for time-based queries)
+
+```json
+
+{
+
+"id": "log789",
+
+"jobId": "job123",
+"jobId": "job123",
+
+"event": "agent_started",
+
+"message": "Frontend agent started processing",
+
+"timestamp": "2025-06-07T12:05:00Z",
+
+"agentId": "frontend_agent",
+
+"processingTime": 45
+
+}
+
+```
+
+### Authentication Flow with Azure:
+
+1. Frontend uses MSAL (Microsoft Authentication Library) to authenticate users via Azure AD.
+
+2. On successful login, frontend receives an access token.
+
+3. Frontend includes the token in the `Authorization` header when calling Azure Functions.
+
+4. Azure Functions validate the token using Azure AD.
+
+### Agent Deployment:### Agent Deployment:
+
+- Each agent (frontend, backend, infra) is built as a Docker container.
+
+- Containers are stored in Azure Container Registry (ACR).
+
+- Agents can be run on:
+
+- **Azure Container Instances (ACI)**: For simpler, per-job scaling.
+
+- **Azure Kubernetes Service (AKS)**: For more complex orchestration and scaling.
+
+### File Storage:
+
+- **Azure Blob Storage** for:
+
+- Storing job artifacts (generated code, build logs)
+
+- Feedback attachments
+
+### CI/CD:
+
+- Use **Azure DevOps Pipelines** or **GitHub Actions** to deploy:
+
+- Azure Functions
+
+Container images to ACR
+
+- Infrastructure (via ARM templates or Terraform)
+
+### Key Changes from Firebase to Azure:
+
+1. **Authentication**: Firebase Auth → Azure AD
+
+2. **Database**: Firestore → Azure Cosmos DB
+
+3. **Functions**: Firebase Functions → Azure Functions
+
+4. **Storage**: Firebase Storage → Azure Blob Storage
+
+5. **Hosting**: Firebase Hosting → Azure Static Web Apps (for Flutter Web) or App Service
+
+6. **Agents**: Run as containers in ACI/AKS instead of Firebase (which doesn't have direct container support)
+
+### Implementation Steps:
+
+1. Set up Azure resources:
+
+- Azure AD application for authentication.
+
+- Azure Cosmos DB account and containers (jobs, feedback, auditLogs).
+
+- Azure Storage account for blobs.
+- Azure Key Vault for secrets (like API keys for Gemini, GitHub tokens).
+
+2. Rebuild the backend functions as Azure Functions (TypeScript/JavaScript).
+
+3. Containerize the agents and deploy to ACR.
+
+4. Update frontend services (`api_service.dart`) to use Azure endpoints and Azure AD authentication.
+
+5. Set up deployment pipelines.
+
+This architecture leverages Azure's strengths in enterprise applications, container orchestration, and integration with other Microsoft tools. It also provides the scalability and security required for an AI development platform.

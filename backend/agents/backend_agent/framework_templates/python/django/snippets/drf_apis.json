@@ -1,0 +1,25 @@
+{
+    "drf_apis": {
+      "description": "Django REST Framework API endpoints",
+      "files": [
+        {
+          "path": "{{project_name}}/apps/core/serializers.py",
+          "content": "from rest_framework import serializers\n\nclass UserSerializer(serializers.Serializer):\n    email = serializers.EmailField()\n    username = serializers.CharField(max_length=100)"
+        },
+        {
+          "path": "{{project_name}}/apps/core/views.py",
+          "content": "from rest_framework.views import APIView\nfrom rest_framework.response import Response\nfrom .serializers import UserSerializer\n\nclass UserAPIView(APIView):\n    def get(self, request):\n        users = [{'email': 'test@example.com', 'username': 'testuser'}]\n        serializer = UserSerializer(users, many=True)\n        return Response(serializer.data)"
+        },
+        {
+          "path": "{{project_name}}/urls.py",
+          "modify": {
+            "insert_at": "urlpatterns = [",
+            "content": "path('api/users/', include('{{project_name}}.apps.core.urls')),"
+          }
+        }
+      ],
+      "dependencies": {
+        "djangorestframework": "3.14.0"
+      }
+    }
+  }

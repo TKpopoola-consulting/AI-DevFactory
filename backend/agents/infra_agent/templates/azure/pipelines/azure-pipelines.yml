@@ -1,0 +1,19 @@
+trigger:
+- main
+
+pool:
+  vmImage: ubuntu-latest
+
+steps:
+- task: AzureResourceManagerTemplateDeployment@3
+  inputs:
+    deploymentScope: 'Resource Group'
+    azureResourceManagerConnection: '$(serviceConnection)'
+    subscriptionId: '$(subscriptionId)'
+    action: 'Create Or Update Resource Group'
+    resourceGroupName: '$(resourceGroup)'
+    location: 'East US'
+    templateLocation: 'Linked artifact'
+    csmFile: '**/main.bicep'
+    overrideParameters: '-appName $(appName)'
+    deploymentMode: 'Incremental'

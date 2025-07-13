@@ -1,0 +1,4 @@
+google-generativeai==0.3.2
+flask==2.3.2
+python-dotenv==1.0.0
+dart-flutter-utils==0.1.5  # Custom package for Flutter validation

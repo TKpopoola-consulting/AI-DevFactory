@@ -1,0 +1,17 @@
+{
+    "riverpod_setup": {
+      "description": "Complete Riverpod state management setup",
+      "files": [
+        {
+          "path": "lib/providers/app_state.dart",
+          "content": "import 'package:flutter_riverpod/flutter_riverpod.dart';\n\nfinal appStateProvider = StateNotifierProvider<AppStateNotifier, AppState>((ref) {\n  return AppStateNotifier();\n});\n\nclass AppState {\n  final bool isLoading;\n  final String? error;\n\n  const AppState({this.isLoading = false, this.error});\n\n  AppState copyWith({bool? isLoading, String? error}) {\n    return AppState(\n      isLoading: isLoading ?? this.isLoading,\n      error: error ?? this.error\n    );\n  }\n}\n\nclass AppStateNotifier extends StateNotifier<AppState> {\n  AppStateNotifier() : super(const AppState());\n\n  void setLoading(bool loading) {\n    state = state.copyWith(isLoading: loading);\n  }\n\n  void setError(String error) {\n    state = state.copyWith(error: error);\n  }\n}"
+        },
+        {
+          "path": "lib/main.dart",
+          "insert_at": "// State providers",
+          "content": "final counterProvider = StateProvider<int>((ref) => 0);"
+        }
+      ],
+      "dependencies": ["flutter_riverpod: ^2.4.9"]
+    }
+  }

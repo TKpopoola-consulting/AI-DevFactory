@@ -1,0 +1,22 @@
+{
+    "theme_provider": {
+      "description": "Complete theme system with Styled Components",
+      "files": [
+        {
+          "path": "src/styles/theme.js",
+          "content": "export const lightTheme = {\n  colors: {\n    primary: '#007bff',\n    background: '#ffffff',\n    text: '#212529'\n  }\n};\n\nexport const darkTheme = {\n  colors: {\n    primary: '#6c757d',\n    background: '#343a40',\n    text: '#f8f9fa'\n  }\n};"
+        },
+        {
+          "path": "src/App.js",
+          "insert_at": "import styled from 'styled-components';",
+          "content": "import { ThemeProvider } from 'styled-components';\nimport { lightTheme } from './styles/theme';"
+        },
+        {
+          "path": "src/App.js",
+          "wrap_component": "ThemeProvider",
+          "props": "theme={lightTheme}"
+        }
+      ],
+      "dependencies": ["styled-components: ^6.1.8"]
+    }
+  }

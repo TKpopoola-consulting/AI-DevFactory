@@ -1,0 +1,27 @@
+{
+    "sqlalchemy_integration": {
+      "description": "SQLAlchemy ORM with async support",
+      "files": [
+        {
+          "path": "db/base.py",
+          "content": "from sqlalchemy.ext.asyncio import AsyncSession, create_async_engine\nfrom sqlalchemy.orm import declarative_base, sessionmaker\n\nDATABASE_URL = 'postgresql+asyncpg://user:pass@localhost:5432/{{app_name}}'\n\nengine = create_async_engine(DATABASE_URL)\nAsyncSessionLocal = sessionmaker(\n    bind=engine,\n    class_=AsyncSession,\n    expire_on_commit=False\n)\n\nBase = declarative_base()\n\nasync def get_db() -> AsyncSession:\n    async with AsyncSessionLocal() as session:\n        yield session"
+        },
+        {
+          "path": "models/user.py",
+          "content": "from sqlalchemy import Column, Integer, String\nfrom db.base import Base\n\nclass User(Base):\n    __tablename__ = 'users'\n    \n    id = Column(Integer, primary_key=True, index=True)\n    email = Column(String, unique=True, index=True)\n    hashed_password = Column(String)"
+        },
+        {
+          "path": "api/v1/endpoints/users.py",
+          "content": "from fastapi import APIRouter, Depends\nfrom sqlalchemy.ext.asyncio import AsyncSession\nfrom models.user import User\nfrom db.base import get_db\n\nrouter = APIRouter(prefix='/users')\n\n@router.get('/')\nasync def get_users(db: AsyncSession = Depends(get_db)):\n    result = await db.execute(select(User))\n    return result.scalars().all()"
+        }
+      ],
+      "dependencies": {
+        "sqlalchemy": "2.0.23",
+        "asyncpg": "0.29.0",
+        "psycopg2-binary": "2.9.9"
+      },
+      "env_vars": {
+        "DATABASE_URL": "postgresql+asyncpg://user:pass@host:port/dbname"
+      }
+    }
+  }

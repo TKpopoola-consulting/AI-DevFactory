@@ -1,0 +1,30 @@
+{
+    "swagger_docs": {
+      "description": "Swagger/OpenAPI documentation setup",
+      "files": [
+        {
+          "path": "src/utils/swagger.js",
+          "content": "const swaggerJsdoc = require('swagger-jsdoc');\nconst swaggerUi = require('swagger-ui-express');\n\nconst options = {\n  definition: {\n    openapi: '3.0.0',\n    info: {\n      title: '{{app_name}} API',\n      version: '1.0.0',\n      description: 'Generated API documentation'\n    },\n    servers: [\n      { url: 'http://localhost:3000', description: 'Development server' },\n      { url: 'https://api.{{app_name}}.com', description: 'Production server' }\n    ],\n    components: {\n      securitySchemes: {\n        bearerAuth: {\n          type: 'http',\n          scheme: 'bearer',\n          bearerFormat: 'JWT'\n        }\n      }\n    }\n  },\n  apis: ['./src/routes/*.js']\n};\n\nconst specs = swaggerJsdoc(options);\n\nmodule.exports = { specs, swaggerUi };"
+        },
+        {
+          "path": "src/app.js",
+          "insert_at": "// Routes",
+          "content": "const { specs, swaggerUi } = require('./utils/swagger');\napp.use('/api-docs', swaggerUi.serve, swaggerUi.setup(specs));"
+        },
+        {
+          "path": "src/routes/health.js",
+          "modify": {
+            "insert_at": "router.get('/',",
+            "content": "/**\n * @openapi\n * /health:\n *   get:\n *     tags:\n *       - Health\n *     description: Check API health status\n *     responses:\n *       200:\n *         description: Returns API health status\n *         content:\n *           application/json:\n *             schema:\n *               type: object\n *               properties:\n *                 status:\n *                   type: string\n *                 timestamp:\n *                   type: string\n *                 uptime:\n *                   type: number\n */"
+          }
+        }
+      ],
+      "dependencies": {
+        "swagger-jsdoc": "^6.2.8",
+        "swagger-ui-express": "^5.0.0"
+      },
+      "devDependencies": {
+        "@types/swagger-jsdoc": "^6.0.1"
+      }
+    }
+  }
