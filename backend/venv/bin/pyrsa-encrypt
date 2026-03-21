@@ -1,4 +1,4 @@
-#!/home/sartorFit/AI-DevFactory/backend/venv/bin/python3
+#!/production/AI-DevFactory/backend/venv/bin/python3
 import sys
 from rsa.cli import encrypt
 if __name__ == '__main__':

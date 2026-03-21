@@ -1,0 +1,41 @@
+2026-03-21T08:15:24: ✅ Database initialized
+2026-03-21T08:15:24: 🚀 Starting AI DevFactory Orchestrator...
+2026-03-21T08:15:24: 📍 API: http://localhost:8000
+2026-03-21T08:15:24: 📚 Docs: http://localhost:8000/docs
+2026-03-21T08:15:24: INFO:     Started server process [214558]
+2026-03-21T08:15:24: INFO:     Waiting for application startup.
+2026-03-21T08:15:24: INFO:     Application startup complete.
+2026-03-21T08:15:24: INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+2026-03-21T08:17:45: INFO:     127.0.0.1:46944 - "GET /health HTTP/1.1" 200 OK
+2026-03-21T08:17:45: INFO:     172.16.0.4:45630 - "GET /health HTTP/1.1" 200 OK
+2026-03-21T08:19:10: INFO:     127.0.0.1:40904 - "GET /health HTTP/1.1" 200 OK
+2026-03-21T08:19:10: INFO:     172.16.0.4:36034 - "GET /health HTTP/1.1" 200 OK
+2026-03-21T08:22:47: INFO:     24.171.29.58:56989 - "GET /jobs HTTP/1.1" 200 OK
+2026-03-21T09:06:04: INFO:     130.12.180.52:47522 - "CONNECT api.ipify.org%3A443 HTTP/1.1" 404 Not Found
+2026-03-21T09:06:04: INFO:     130.12.180.52:47536 - "CONNECT api.ipify.org%3A443 HTTP/1.1" 404 Not Found
+2026-03-21T09:06:05: INFO:     130.12.180.52:37990 - "CONNECT api.ipify.org%3A443 HTTP/1.1" 404 Not Found
+2026-03-21T09:06:05: INFO:     130.12.180.52:37992 - "CONNECT api.ipify.org%3A443 HTTP/1.1" 404 Not Found
+2026-03-21T09:06:05: INFO:     130.12.180.52:37998 - "CONNECT api.ipify.org%3A443 HTTP/1.1" 404 Not Found
+2026-03-21T09:06:06: INFO:     130.12.180.52:38004 - "CONNECT api.ipify.org%3A443 HTTP/1.1" 404 Not Found
+2026-03-21T09:06:28: INFO:     130.12.180.52:51484 - "CONNECT api.ipify.org%3A443 HTTP/1.1" 404 Not Found
+2026-03-21T09:06:30: INFO:     130.12.180.52:51496 - "CONNECT api.ipify.org%3A443 HTTP/1.1" 404 Not Found
+2026-03-21T10:04:36: INFO:     199.45.155.90:37836 - "GET / HTTP/1.1" 200 OK
+2026-03-21T10:04:44: WARNING:  Invalid HTTP request received.
+2026-03-21T10:04:45: INFO:     199.45.155.90:30888 - "GET / HTTP/1.1" 200 OK
+2026-03-21T10:04:45: INFO:     199.45.155.90:30902 - "PRI %2A HTTP/2.0" 404 Not Found
+2026-03-21T10:04:45: WARNING:  Invalid HTTP request received.
+2026-03-21T10:04:45: INFO:     199.45.155.90:30916 - "GET /favicon.ico HTTP/1.1" 404 Not Found
+2026-03-21T10:04:49: INFO:     199.45.155.90:30918 - "GET / HTTP/1.1" 200 OK
+2026-03-21T10:04:55: WARNING:  Invalid HTTP request received.
+2026-03-21T10:04:56: INFO:     199.45.155.90:24220 - "GET /login HTTP/1.1" 404 Not Found
+2026-03-21T10:09:21: INFO:     198.235.24.152:59952 - "GET / HTTP/1.1" 200 OK
+2026-03-21T10:11:44: INFO:     64.62.156.212:61218 - "GET / HTTP/1.1" 200 OK
+2026-03-21T10:12:19: INFO:     64.62.156.219:15381 - "GET /favicon.ico HTTP/1.1" 404 Not Found
+2026-03-21T10:12:56: INFO:     64.62.156.214:42103 - "GET http%3A//api.ipify.org/?format=json HTTP/1.1" 404 Not Found
+2026-03-21T10:13:08: INFO:     64.62.156.213:32689 - "CONNECT www.shadowserver.org%3A443 HTTP/1.1" 404 Not Found
+2026-03-21T10:51:09: INFO:     183.81.169.235:1108 - "GET /../../../../../../etc/passwd HTTP/1.1" 404 Not Found
+2026-03-21T12:46:15: INFO:     89.42.231.182:45762 - "GET /../../../../../../etc/passwd HTTP/1.1" 404 Not Found
+2026-03-21T15:28:38: INFO:     Shutting down
+2026-03-21T15:28:38: INFO:     Waiting for application shutdown.
+2026-03-21T15:28:38: INFO:     Application shutdown complete.
+2026-03-21T15:28:38: INFO:     Finished server process [214558]

@@ -193,7 +193,7 @@ class _CodePreviewWidgetState extends State<CodePreviewWidget> {
     if (filename.endsWith('.dart')) return Icons.code;
     if (filename.endsWith('.py')) return Icons.code;
     if (filename.endsWith('.js')) return Icons.javascript;
-    if (filename.endsWith('.jsx')) return Icons.react;
+    if (filename.endsWith('.jsx')) return Icons.code;
     if (filename.endsWith('.json')) return Icons.data_object;
     if (filename.endsWith('.yaml') || filename.endsWith('.yml')) return Icons.settings;
     if (filename.endsWith('.md')) return Icons.description;

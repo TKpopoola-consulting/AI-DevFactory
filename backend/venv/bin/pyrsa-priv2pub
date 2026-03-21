@@ -1,4 +1,4 @@
-#!/home/sartorFit/AI-DevFactory/backend/venv/bin/python3
+#!/production/AI-DevFactory/backend/venv/bin/python3
 import sys
 from rsa.util import private_to_public
 if __name__ == '__main__':

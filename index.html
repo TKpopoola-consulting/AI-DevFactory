@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI DevFactory - AI Code Generator</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .container { max-width: 1000px; margin: 0 auto; }
+        .header { text-align: center; color: white; margin-bottom: 40px; }
+        .header h1 { font-size: 48px; margin-bottom: 10px; }
+        .header p { font-size: 18px; opacity: 0.9; }
+        .card { background: white; border-radius: 20px; padding: 30px; margin-bottom: 20px; box-shadow: 0 10px 40px rgba(0,0,0,0.1); }
+        .card h2 { color: #333; margin-bottom: 20px; border-left: 4px solid #667eea; padding-left: 15px; }
+        textarea {
+            width: 100%; padding: 15px; border: 2px solid #e0e0e0; border-radius: 10px;
+            font-size: 16px; font-family: monospace; resize: vertical; min-height: 120px;
+        }
+        textarea:focus { outline: none; border-color: #667eea; }
+        select, input { padding: 10px 15px; border: 2px solid #e0e0e0; border-radius: 10px; font-size: 14px; margin: 5px; background: white; }
+        button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white; border: none; padding: 12px 30px; border-radius: 10px;
+            font-size: 16px; font-weight: bold; cursor: pointer; margin-top: 20px;
+            transition: transform 0.2s;
+        }
+        button:hover { transform: translateY(-2px); }
+        button:disabled { opacity: 0.6; cursor: not-allowed; }
+        .job-item { background: #f8f9fa; padding: 15px; border-radius: 10px; margin-bottom: 10px; display: flex; justify-content: space-between; align-items: center; }
+        .status { padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: bold; }
+        .status.processing { background: #fff3cd; color: #856404; }
+        .status.completed { background: #d4edda; color: #155724; }
+        .status.failed { background: #f8d7da; color: #721c24; }
+        .loading { display: inline-block; width: 20px; height: 20px; border: 3px solid #f3f3f3; border-top: 3px solid #667eea; border-radius: 50%; animation: spin 1s linear infinite; }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        .result { margin-top: 20px; padding: 15px; background: #1e1e1e; border-radius: 10px; display: none; color: #d4d4d4; overflow-x: auto; }
+        .result pre { font-family: monospace; font-size: 12px; white-space: pre-wrap; }
+        .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin: 20px 0; }
+        .info-card { background: #f8f9fa; padding: 15px; border-radius: 10px; text-align: center; }
+        .info-card .value { font-size: 24px; font-weight: bold; color: #667eea; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🤖 AI DevFactory</h1>
+            <p>Transform ideas into production-ready code in minutes</p>
+        </div>
+
+        <div class="card">
+            <h2>📝 Describe Your Application</h2>
+            <textarea id="prompt" placeholder="Example: Build a task management app with user authentication (JWT), task CRUD operations, and deploy to Azure..."></textarea>
+            
+            <div class="grid-3">
+                <div class="info-card">
+                    <div>🎨 Frontend</div>
+                    <select id="frontend" style="margin-top: 10px; width: 100%;">
+                        <option value="react">React 18+</option>
+                        <option value="flutter">Flutter</option>
+                        <option value="vue">Vue.js 3</option>
+                    </select>
+                </div>
+                <div class="info-card">
+                    <div>⚙️ Backend</div>
+                    <select id="backend" style="margin-top: 10px; width: 100%;">
+                        <option value="fastapi">FastAPI</option>
+                        <option value="django">Django</option>
+                        <option value="express">Express.js</option>
+                    </select>
+                </div>
+                <div class="info-card">
+                    <div>☁️ Cloud</div>
+                    <select id="cloud" style="margin-top: 10px; width: 100%;">
+                        <option value="azure">Microsoft Azure</option>
+                        <option value="aws">Amazon Web Services</option>
+                        <option value="gcp">Google Cloud</option>
+                    </select>
+                </div>
+            </div>
+            
+            <button id="generateBtn" onclick="createJob()">🚀 Generate Application</button>
+        </div>
+
+        <div class="card">
+            <h2>📊 Recent Jobs</h2>
+            <div id="jobsList">
+                <div style="text-align: center; color: #999;">Loading jobs...</div>
+            </div>
+            <button onclick="refreshJobs()" style="margin-top: 10px; background: #6c757d;">🔄 Refresh</button>
+        </div>
+
+        <div id="result" class="result"></div>
+    </div>
+
+    <script>
+        const API_URL = 'http://172.16.0.4:8000';
+        
+        async function createJob() {
+            const prompt = document.getElementById('prompt').value;
+            if (!prompt) {
+                alert('Please describe your application');
+                return;
+            }
+            
+            const generateBtn = document.getElementById('generateBtn');
+            generateBtn.disabled = true;
+            generateBtn.innerHTML = '<span class="loading"></span> Generating...';
+            
+            const config = {
+                frontend: document.getElementById('frontend').value,
+                backend: document.getElementById('backend').value,
+                cloud: document.getElementById('cloud').value
+            };
+            
+            try {
+                const response = await fetch(`${API_URL}/jobs`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        prompt: prompt,
+                        user_id: 'web_user',
+                        output_config: config
+                    })
+                });
+                
+                const data = await response.json();
+                showResult('success', `Job created! ID: ${data.job_id}`);
+                refreshJobs();
+                
+                // Poll for job status
+                pollJobStatus(data.job_id);
+                
+            } catch (error) {
+                showResult('error', `Error: ${error.message}`);
+            } finally {
+                generateBtn.disabled = false;
+                generateBtn.innerHTML = '🚀 Generate Application';
+            }
+        }
+        
+        async function pollJobStatus(jobId) {
+            const interval = setInterval(async () => {
+                try {
+                    const response = await fetch(`${API_URL}/jobs/${jobId}`);
+                    const job = await response.json();
+                    
+                    if (job.status === 'completed') {
+                        clearInterval(interval);
+                        showResult('success', `✅ Job ${jobId} completed!`);
+                        refreshJobs();
+                    } else if (job.status === 'failed') {
+                        clearInterval(interval);
+                        showResult('error', `❌ Job ${jobId} failed`);
+                    }
+                } catch (e) {
+                    console.error('Polling error:', e);
+                }
+            }, 2000);
+        }
+        
+        async function refreshJobs() {
+            try {
+                const response = await fetch(`${API_URL}/jobs`);
+                const data = await response.json();
+                const jobs = data.jobs || [];
+                
+                const jobsList = document.getElementById('jobsList');
+                if (jobs.length === 0) {
+                    jobsList.innerHTML = '<div style="text-align: center; color: #999;">No jobs yet. Create your first job!</div>';
+                    return;
+                }
+                
+                jobsList.innerHTML = jobs.map(job => `
+                    <div class="job-item">
+                        <div>
+                            <strong>${job.job_id.substring(0, 8)}...</strong><br>
+                            <small>${new Date(job.created_at).toLocaleString()}</small>
+                        </div>
+                        <div>
+                            <span class="status ${job.status}">${job.status}</span>
+                            <button onclick="viewJob('${job.job_id}')" style="margin-left: 10px; padding: 5px 10px; font-size: 12px;">View</button>
+                        </div>
+                    </div>
+                `).join('');
+                
+            } catch (error) {
+                console.error('Error fetching jobs:', error);
+                document.getElementById('jobsList').innerHTML = '<div style="text-align: center; color: red;">Error loading jobs</div>';
+            }
+        }
+        
+        async function viewJob(jobId) {
+            try {
+                const response = await fetch(`${API_URL}/jobs/${jobId}`);
+                const job = await response.json();
+                showResult('info', JSON.stringify(job, null, 2));
+            } catch (error) {
+                showResult('error', `Error: ${error.message}`);
+            }
+        }
+        
+        function showResult(type, message) {
+            const resultDiv = document.getElementById('result');
+            resultDiv.style.display = 'block';
+            resultDiv.innerHTML = `<pre>${message}</pre>`;
+            setTimeout(() => {
+                resultDiv.style.display = 'none';
+            }, 10000);
+        }
+        
+        // Load jobs on page load
+        refreshJobs();
+    </script>
+</body>
+</html>

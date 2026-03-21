@@ -1,0 +1,288 @@
+2026-03-21T08:15:24: Traceback (most recent call last):
+2026-03-21T08:15:24:   File "<frozen runpy>", line 198, in _run_module_as_main
+2026-03-21T08:15:24:   File "<frozen runpy>", line 88, in _run_code
+2026-03-21T08:15:24:   File "/usr/lib/python3.12/http/server.py", line 1314, in <module>
+2026-03-21T08:15:24:     test(
+2026-03-21T08:15:24:   File "/usr/lib/python3.12/http/server.py", line 1261, in test
+2026-03-21T08:15:24:     with ServerClass(addr, HandlerClass) as httpd:
+2026-03-21T08:15:24:          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-03-21T08:15:24:   File "/usr/lib/python3.12/socketserver.py", line 457, in __init__
+2026-03-21T08:15:24:     self.server_bind()
+2026-03-21T08:15:24:   File "/usr/lib/python3.12/http/server.py", line 1308, in server_bind
+2026-03-21T08:15:24:     return super().server_bind()
+2026-03-21T08:15:24:            ^^^^^^^^^^^^^^^^^^^^^
+2026-03-21T08:15:24:   File "/usr/lib/python3.12/http/server.py", line 136, in server_bind
+2026-03-21T08:15:24:     socketserver.TCPServer.server_bind(self)
+2026-03-21T08:15:24:   File "/usr/lib/python3.12/socketserver.py", line 473, in server_bind
+2026-03-21T08:15:24:     self.socket.bind(self.server_address)
+2026-03-21T08:15:24: OSError: [Errno 98] Address already in use
+2026-03-21T08:15:24: Traceback (most recent call last):
+2026-03-21T08:15:24:   File "<frozen runpy>", line 198, in _run_module_as_main
+2026-03-21T08:15:24:   File "<frozen runpy>", line 88, in _run_code
+2026-03-21T08:15:24:   File "/usr/lib/python3.12/http/server.py", line 1314, in <module>
+2026-03-21T08:15:24:     test(
+2026-03-21T08:15:24:   File "/usr/lib/python3.12/http/server.py", line 1261, in test
+2026-03-21T08:15:24:     with ServerClass(addr, HandlerClass) as httpd:
+2026-03-21T08:15:24:          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-03-21T08:15:24:   File "/usr/lib/python3.12/socketserver.py", line 457, in __init__
+2026-03-21T08:15:24:     self.server_bind()
+2026-03-21T08:15:24:   File "/usr/lib/python3.12/http/server.py", line 1308, in server_bind
+2026-03-21T08:15:24:     return super().server_bind()
+2026-03-21T08:15:24:            ^^^^^^^^^^^^^^^^^^^^^
+2026-03-21T08:15:24:   File "/usr/lib/python3.12/http/server.py", line 136, in server_bind
+2026-03-21T08:15:24:     socketserver.TCPServer.server_bind(self)
+2026-03-21T08:15:24:   File "/usr/lib/python3.12/socketserver.py", line 473, in server_bind
+2026-03-21T08:15:24:     self.socket.bind(self.server_address)
+2026-03-21T08:15:24: OSError: [Errno 98] Address already in use
+2026-03-21T08:15:24: Traceback (most recent call last):
+2026-03-21T08:15:24:   File "<frozen runpy>", line 198, in _run_module_as_main
+2026-03-21T08:15:24:   File "<frozen runpy>", line 88, in _run_code
+2026-03-21T08:15:24:   File "/usr/lib/python3.12/http/server.py", line 1314, in <module>
+2026-03-21T08:15:24:     test(
+2026-03-21T08:15:24:   File "/usr/lib/python3.12/http/server.py", line 1261, in test
+2026-03-21T08:15:24:     with ServerClass(addr, HandlerClass) as httpd:
+2026-03-21T08:15:24:          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-03-21T08:15:24:   File "/usr/lib/python3.12/socketserver.py", line 457, in __init__
+2026-03-21T08:15:24:     self.server_bind()
+2026-03-21T08:15:24:   File "/usr/lib/python3.12/http/server.py", line 1308, in server_bind
+2026-03-21T08:15:24:     return super().server_bind()
+2026-03-21T08:15:24:            ^^^^^^^^^^^^^^^^^^^^^
+2026-03-21T08:15:24:   File "/usr/lib/python3.12/http/server.py", line 136, in server_bind
+2026-03-21T08:15:24:     socketserver.TCPServer.server_bind(self)
+2026-03-21T08:15:24:   File "/usr/lib/python3.12/socketserver.py", line 473, in server_bind
+2026-03-21T08:15:24:     self.socket.bind(self.server_address)
+2026-03-21T08:15:24: OSError: [Errno 98] Address already in use
+2026-03-21T08:15:24: Traceback (most recent call last):
+2026-03-21T08:15:24:   File "<frozen runpy>", line 198, in _run_module_as_main
+2026-03-21T08:15:24:   File "<frozen runpy>", line 88, in _run_code
+2026-03-21T08:15:24:   File "/usr/lib/python3.12/http/server.py", line 1314, in <module>
+2026-03-21T08:15:24:     test(
+2026-03-21T08:15:24:   File "/usr/lib/python3.12/http/server.py", line 1261, in test
+2026-03-21T08:15:24:     with ServerClass(addr, HandlerClass) as httpd:
+2026-03-21T08:15:24:          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-03-21T08:15:24:   File "/usr/lib/python3.12/socketserver.py", line 457, in __init__
+2026-03-21T08:15:24:     self.server_bind()
+2026-03-21T08:15:24:   File "/usr/lib/python3.12/http/server.py", line 1308, in server_bind
+2026-03-21T08:15:24:     return super().server_bind()
+2026-03-21T08:15:24:            ^^^^^^^^^^^^^^^^^^^^^
+2026-03-21T08:15:24:   File "/usr/lib/python3.12/http/server.py", line 136, in server_bind
+2026-03-21T08:15:24:     socketserver.TCPServer.server_bind(self)
+2026-03-21T08:15:24:   File "/usr/lib/python3.12/socketserver.py", line 473, in server_bind
+2026-03-21T08:15:24:     self.socket.bind(self.server_address)
+2026-03-21T08:15:24: OSError: [Errno 98] Address already in use
+2026-03-21T08:15:24: Traceback (most recent call last):
+2026-03-21T08:15:24:   File "<frozen runpy>", line 198, in _run_module_as_main
+2026-03-21T08:15:24:   File "<frozen runpy>", line 88, in _run_code
+2026-03-21T08:15:24:   File "/usr/lib/python3.12/http/server.py", line 1314, in <module>
+2026-03-21T08:15:24:     test(
+2026-03-21T08:15:24:   File "/usr/lib/python3.12/http/server.py", line 1261, in test
+2026-03-21T08:15:24:     with ServerClass(addr, HandlerClass) as httpd:
+2026-03-21T08:15:24:          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-03-21T08:15:24:   File "/usr/lib/python3.12/socketserver.py", line 457, in __init__
+2026-03-21T08:15:24:     self.server_bind()
+2026-03-21T08:15:24:   File "/usr/lib/python3.12/http/server.py", line 1308, in server_bind
+2026-03-21T08:15:24:     return super().server_bind()
+2026-03-21T08:15:24:            ^^^^^^^^^^^^^^^^^^^^^
+2026-03-21T08:15:24:   File "/usr/lib/python3.12/http/server.py", line 136, in server_bind
+2026-03-21T08:15:24:     socketserver.TCPServer.server_bind(self)
+2026-03-21T08:15:24:   File "/usr/lib/python3.12/socketserver.py", line 473, in server_bind
+2026-03-21T08:15:24:     self.socket.bind(self.server_address)
+2026-03-21T08:15:24: OSError: [Errno 98] Address already in use
+2026-03-21T08:15:24: Traceback (most recent call last):
+2026-03-21T08:15:24:   File "<frozen runpy>", line 198, in _run_module_as_main
+2026-03-21T08:15:24:   File "<frozen runpy>", line 88, in _run_code
+2026-03-21T08:15:24:   File "/usr/lib/python3.12/http/server.py", line 1314, in <module>
+2026-03-21T08:15:24:     test(
+2026-03-21T08:15:24:   File "/usr/lib/python3.12/http/server.py", line 1261, in test
+2026-03-21T08:15:24:     with ServerClass(addr, HandlerClass) as httpd:
+2026-03-21T08:15:24:          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-03-21T08:15:24:   File "/usr/lib/python3.12/socketserver.py", line 457, in __init__
+2026-03-21T08:15:24:     self.server_bind()
+2026-03-21T08:15:24:   File "/usr/lib/python3.12/http/server.py", line 1308, in server_bind
+2026-03-21T08:15:24:     return super().server_bind()
+2026-03-21T08:15:24:            ^^^^^^^^^^^^^^^^^^^^^
+2026-03-21T08:15:24:   File "/usr/lib/python3.12/http/server.py", line 136, in server_bind
+2026-03-21T08:15:24:     socketserver.TCPServer.server_bind(self)
+2026-03-21T08:15:24:   File "/usr/lib/python3.12/socketserver.py", line 473, in server_bind
+2026-03-21T08:15:24:     self.socket.bind(self.server_address)
+2026-03-21T08:15:24: OSError: [Errno 98] Address already in use
+2026-03-21T08:15:24: Traceback (most recent call last):
+2026-03-21T08:15:24:   File "<frozen runpy>", line 198, in _run_module_as_main
+2026-03-21T08:15:24:   File "<frozen runpy>", line 88, in _run_code
+2026-03-21T08:15:24:   File "/usr/lib/python3.12/http/server.py", line 1314, in <module>
+2026-03-21T08:15:24:     test(
+2026-03-21T08:15:24:   File "/usr/lib/python3.12/http/server.py", line 1261, in test
+2026-03-21T08:15:24:     with ServerClass(addr, HandlerClass) as httpd:
+2026-03-21T08:15:24:          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-03-21T08:15:24:   File "/usr/lib/python3.12/socketserver.py", line 457, in __init__
+2026-03-21T08:15:24:     self.server_bind()
+2026-03-21T08:15:24:   File "/usr/lib/python3.12/http/server.py", line 1308, in server_bind
+2026-03-21T08:15:24:     return super().server_bind()
+2026-03-21T08:15:24:            ^^^^^^^^^^^^^^^^^^^^^
+2026-03-21T08:15:24:   File "/usr/lib/python3.12/http/server.py", line 136, in server_bind
+2026-03-21T08:15:24:     socketserver.TCPServer.server_bind(self)
+2026-03-21T08:15:24:   File "/usr/lib/python3.12/socketserver.py", line 473, in server_bind
+2026-03-21T08:15:24:     self.socket.bind(self.server_address)
+2026-03-21T08:15:24: OSError: [Errno 98] Address already in use
+2026-03-21T08:15:24: Traceback (most recent call last):
+2026-03-21T08:15:24:   File "<frozen runpy>", line 198, in _run_module_as_main
+2026-03-21T08:15:24:   File "<frozen runpy>", line 88, in _run_code
+2026-03-21T08:15:24:   File "/usr/lib/python3.12/http/server.py", line 1314, in <module>
+2026-03-21T08:15:24:     test(
+2026-03-21T08:15:24:   File "/usr/lib/python3.12/http/server.py", line 1261, in test
+2026-03-21T08:15:24:     with ServerClass(addr, HandlerClass) as httpd:
+2026-03-21T08:15:24:          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-03-21T08:15:24:   File "/usr/lib/python3.12/socketserver.py", line 457, in __init__
+2026-03-21T08:15:24:     self.server_bind()
+2026-03-21T08:15:24:   File "/usr/lib/python3.12/http/server.py", line 1308, in server_bind
+2026-03-21T08:15:24:     return super().server_bind()
+2026-03-21T08:15:24:            ^^^^^^^^^^^^^^^^^^^^^
+2026-03-21T08:15:24:   File "/usr/lib/python3.12/http/server.py", line 136, in server_bind
+2026-03-21T08:15:24:     socketserver.TCPServer.server_bind(self)
+2026-03-21T08:15:24:   File "/usr/lib/python3.12/socketserver.py", line 473, in server_bind
+2026-03-21T08:15:24:     self.socket.bind(self.server_address)
+2026-03-21T08:15:24: OSError: [Errno 98] Address already in use
+2026-03-21T08:15:24: Traceback (most recent call last):
+2026-03-21T08:15:24:   File "<frozen runpy>", line 198, in _run_module_as_main
+2026-03-21T08:15:24:   File "<frozen runpy>", line 88, in _run_code
+2026-03-21T08:15:24:   File "/usr/lib/python3.12/http/server.py", line 1314, in <module>
+2026-03-21T08:15:24:     test(
+2026-03-21T08:15:24:   File "/usr/lib/python3.12/http/server.py", line 1261, in test
+2026-03-21T08:15:24:     with ServerClass(addr, HandlerClass) as httpd:
+2026-03-21T08:15:24:          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-03-21T08:15:24:   File "/usr/lib/python3.12/socketserver.py", line 457, in __init__
+2026-03-21T08:15:24:     self.server_bind()
+2026-03-21T08:15:24:   File "/usr/lib/python3.12/http/server.py", line 1308, in server_bind
+2026-03-21T08:15:24:     return super().server_bind()
+2026-03-21T08:15:24:            ^^^^^^^^^^^^^^^^^^^^^
+2026-03-21T08:15:24:   File "/usr/lib/python3.12/http/server.py", line 136, in server_bind
+2026-03-21T08:15:24:     socketserver.TCPServer.server_bind(self)
+2026-03-21T08:15:24:   File "/usr/lib/python3.12/socketserver.py", line 473, in server_bind
+2026-03-21T08:15:24:     self.socket.bind(self.server_address)
+2026-03-21T08:15:24: OSError: [Errno 98] Address already in use
+2026-03-21T08:15:24: Traceback (most recent call last):
+2026-03-21T08:15:24:   File "<frozen runpy>", line 198, in _run_module_as_main
+2026-03-21T08:15:24:   File "<frozen runpy>", line 88, in _run_code
+2026-03-21T08:15:24:   File "/usr/lib/python3.12/http/server.py", line 1314, in <module>
+2026-03-21T08:15:24:     test(
+2026-03-21T08:15:24:   File "/usr/lib/python3.12/http/server.py", line 1261, in test
+2026-03-21T08:15:24:     with ServerClass(addr, HandlerClass) as httpd:
+2026-03-21T08:15:24:          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-03-21T08:15:24:   File "/usr/lib/python3.12/socketserver.py", line 457, in __init__
+2026-03-21T08:15:24:     self.server_bind()
+2026-03-21T08:15:24:   File "/usr/lib/python3.12/http/server.py", line 1308, in server_bind
+2026-03-21T08:15:24:     return super().server_bind()
+2026-03-21T08:15:24:            ^^^^^^^^^^^^^^^^^^^^^
+2026-03-21T08:15:24:   File "/usr/lib/python3.12/http/server.py", line 136, in server_bind
+2026-03-21T08:15:24:     socketserver.TCPServer.server_bind(self)
+2026-03-21T08:15:24:   File "/usr/lib/python3.12/socketserver.py", line 473, in server_bind
+2026-03-21T08:15:24:     self.socket.bind(self.server_address)
+2026-03-21T08:15:24: OSError: [Errno 98] Address already in use
+2026-03-21T08:15:24: Traceback (most recent call last):
+2026-03-21T08:15:24:   File "<frozen runpy>", line 198, in _run_module_as_main
+2026-03-21T08:15:24:   File "<frozen runpy>", line 88, in _run_code
+2026-03-21T08:15:24:   File "/usr/lib/python3.12/http/server.py", line 1314, in <module>
+2026-03-21T08:15:24:     test(
+2026-03-21T08:15:24:   File "/usr/lib/python3.12/http/server.py", line 1261, in test
+2026-03-21T08:15:24:     with ServerClass(addr, HandlerClass) as httpd:
+2026-03-21T08:15:24:          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-03-21T08:15:24:   File "/usr/lib/python3.12/socketserver.py", line 457, in __init__
+2026-03-21T08:15:24:     self.server_bind()
+2026-03-21T08:15:24:   File "/usr/lib/python3.12/http/server.py", line 1308, in server_bind
+2026-03-21T08:15:24:     return super().server_bind()
+2026-03-21T08:15:24:            ^^^^^^^^^^^^^^^^^^^^^
+2026-03-21T08:15:24:   File "/usr/lib/python3.12/http/server.py", line 136, in server_bind
+2026-03-21T08:15:24:     socketserver.TCPServer.server_bind(self)
+2026-03-21T08:15:24:   File "/usr/lib/python3.12/socketserver.py", line 473, in server_bind
+2026-03-21T08:15:24:     self.socket.bind(self.server_address)
+2026-03-21T08:15:24: OSError: [Errno 98] Address already in use
+2026-03-21T08:15:24: Traceback (most recent call last):
+2026-03-21T08:15:24:   File "<frozen runpy>", line 198, in _run_module_as_main
+2026-03-21T08:15:24:   File "<frozen runpy>", line 88, in _run_code
+2026-03-21T08:15:24:   File "/usr/lib/python3.12/http/server.py", line 1314, in <module>
+2026-03-21T08:15:24:     test(
+2026-03-21T08:15:24:   File "/usr/lib/python3.12/http/server.py", line 1261, in test
+2026-03-21T08:15:24:     with ServerClass(addr, HandlerClass) as httpd:
+2026-03-21T08:15:24:          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-03-21T08:15:24:   File "/usr/lib/python3.12/socketserver.py", line 457, in __init__
+2026-03-21T08:15:24:     self.server_bind()
+2026-03-21T08:15:24:   File "/usr/lib/python3.12/http/server.py", line 1308, in server_bind
+2026-03-21T08:15:24:     return super().server_bind()
+2026-03-21T08:15:24:            ^^^^^^^^^^^^^^^^^^^^^
+2026-03-21T08:15:24:   File "/usr/lib/python3.12/http/server.py", line 136, in server_bind
+2026-03-21T08:15:24:     socketserver.TCPServer.server_bind(self)
+2026-03-21T08:15:24:   File "/usr/lib/python3.12/socketserver.py", line 473, in server_bind
+2026-03-21T08:15:24:     self.socket.bind(self.server_address)
+2026-03-21T08:15:24: OSError: [Errno 98] Address already in use
+2026-03-21T08:15:24: Traceback (most recent call last):
+2026-03-21T08:15:24:   File "<frozen runpy>", line 198, in _run_module_as_main
+2026-03-21T08:15:24:   File "<frozen runpy>", line 88, in _run_code
+2026-03-21T08:15:24:   File "/usr/lib/python3.12/http/server.py", line 1314, in <module>
+2026-03-21T08:15:24:     test(
+2026-03-21T08:15:24:   File "/usr/lib/python3.12/http/server.py", line 1261, in test
+2026-03-21T08:15:24:     with ServerClass(addr, HandlerClass) as httpd:
+2026-03-21T08:15:24:          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-03-21T08:15:24:   File "/usr/lib/python3.12/socketserver.py", line 457, in __init__
+2026-03-21T08:15:24:     self.server_bind()
+2026-03-21T08:15:24:   File "/usr/lib/python3.12/http/server.py", line 1308, in server_bind
+2026-03-21T08:15:24:     return super().server_bind()
+2026-03-21T08:15:24:            ^^^^^^^^^^^^^^^^^^^^^
+2026-03-21T08:15:24:   File "/usr/lib/python3.12/http/server.py", line 136, in server_bind
+2026-03-21T08:15:24:     socketserver.TCPServer.server_bind(self)
+2026-03-21T08:15:24:   File "/usr/lib/python3.12/socketserver.py", line 473, in server_bind
+2026-03-21T08:15:24:     self.socket.bind(self.server_address)
+2026-03-21T08:15:24: OSError: [Errno 98] Address already in use
+2026-03-21T08:15:24: Traceback (most recent call last):
+2026-03-21T08:15:24:   File "<frozen runpy>", line 198, in _run_module_as_main
+2026-03-21T08:15:24:   File "<frozen runpy>", line 88, in _run_code
+2026-03-21T08:15:24:   File "/usr/lib/python3.12/http/server.py", line 1314, in <module>
+2026-03-21T08:15:24:     test(
+2026-03-21T08:15:24:   File "/usr/lib/python3.12/http/server.py", line 1261, in test
+2026-03-21T08:15:24:     with ServerClass(addr, HandlerClass) as httpd:
+2026-03-21T08:15:24:          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-03-21T08:15:24:   File "/usr/lib/python3.12/socketserver.py", line 457, in __init__
+2026-03-21T08:15:24:     self.server_bind()
+2026-03-21T08:15:24:   File "/usr/lib/python3.12/http/server.py", line 1308, in server_bind
+2026-03-21T08:15:24:     return super().server_bind()
+2026-03-21T08:15:24:            ^^^^^^^^^^^^^^^^^^^^^
+2026-03-21T08:15:24:   File "/usr/lib/python3.12/http/server.py", line 136, in server_bind
+2026-03-21T08:15:24:     socketserver.TCPServer.server_bind(self)
+2026-03-21T08:15:24:   File "/usr/lib/python3.12/socketserver.py", line 473, in server_bind
+2026-03-21T08:15:24:     self.socket.bind(self.server_address)
+2026-03-21T08:15:24: OSError: [Errno 98] Address already in use
+2026-03-21T08:15:24: Traceback (most recent call last):
+2026-03-21T08:15:24:   File "<frozen runpy>", line 198, in _run_module_as_main
+2026-03-21T08:15:24:   File "<frozen runpy>", line 88, in _run_code
+2026-03-21T08:15:24:   File "/usr/lib/python3.12/http/server.py", line 1314, in <module>
+2026-03-21T08:15:24:     test(
+2026-03-21T08:15:24:   File "/usr/lib/python3.12/http/server.py", line 1261, in test
+2026-03-21T08:15:24:     with ServerClass(addr, HandlerClass) as httpd:
+2026-03-21T08:15:24:          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-03-21T08:15:24:   File "/usr/lib/python3.12/socketserver.py", line 457, in __init__
+2026-03-21T08:15:24:     self.server_bind()
+2026-03-21T08:15:24:   File "/usr/lib/python3.12/http/server.py", line 1308, in server_bind
+2026-03-21T08:15:24:     return super().server_bind()
+2026-03-21T08:15:24:            ^^^^^^^^^^^^^^^^^^^^^
+2026-03-21T08:15:24:   File "/usr/lib/python3.12/http/server.py", line 136, in server_bind
+2026-03-21T08:15:24:     socketserver.TCPServer.server_bind(self)
+2026-03-21T08:15:24:   File "/usr/lib/python3.12/socketserver.py", line 473, in server_bind
+2026-03-21T08:15:24:     self.socket.bind(self.server_address)
+2026-03-21T08:15:24: OSError: [Errno 98] Address already in use
+2026-03-21T08:15:24: Traceback (most recent call last):
+2026-03-21T08:15:24:   File "<frozen runpy>", line 198, in _run_module_as_main
+2026-03-21T08:15:24:   File "<frozen runpy>", line 88, in _run_code
+2026-03-21T08:15:24:   File "/usr/lib/python3.12/http/server.py", line 1314, in <module>
+2026-03-21T08:15:24:     test(
+2026-03-21T08:15:24:   File "/usr/lib/python3.12/http/server.py", line 1261, in test
+2026-03-21T08:15:24:     with ServerClass(addr, HandlerClass) as httpd:
+2026-03-21T08:15:24:          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-03-21T08:15:24:   File "/usr/lib/python3.12/socketserver.py", line 457, in __init__
+2026-03-21T08:15:24:     self.server_bind()
+2026-03-21T08:15:24:   File "/usr/lib/python3.12/http/server.py", line 1308, in server_bind
+2026-03-21T08:15:24:     return super().server_bind()
+2026-03-21T08:15:24:            ^^^^^^^^^^^^^^^^^^^^^
+2026-03-21T08:15:24:   File "/usr/lib/python3.12/http/server.py", line 136, in server_bind
+2026-03-21T08:15:24:     socketserver.TCPServer.server_bind(self)
+2026-03-21T08:15:24:   File "/usr/lib/python3.12/socketserver.py", line 473, in server_bind
+2026-03-21T08:15:24:     self.socket.bind(self.server_address)
+2026-03-21T08:15:24: OSError: [Errno 98] Address already in use
