@@ -1,0 +1,158 @@
+# backend/orchestrator/utils/artifact_integrator.py
+"""
+Artifact integration and merging
+"""
+import json
+import shutil
+from pathlib import Path
+from typing import Dict, List, Any
+import zipfile
+from io import BytesIO
+import logging
+
+logger = logging.getLogger(__name__)
+
+
+class ArtifactIntegrator:
+    """Merge artifacts from multiple agents into final project"""
+    
+    def __init__(self):
+        self.config = {
+            "monorepo": False,
+            "generate_readme": True,
+            "validate_contracts": True
+        }
+    
+    async def merge_artifacts(self, job_id: str, artifacts: Dict, config: Dict) -> Dict:
+        """
+        Merge code from all agents into final project structure
+        """
+        final_structure = {
+            "frontend": artifacts.get("frontend", {}),
+            "backend": artifacts.get("backend", {}),
+            "infrastructure": artifacts.get("infra", {}),
+            "docs": {},
+            "config": {}
+        }
+        
+        # Merge frontend and backend if they need to be in same repo
+        if config.get("monorepo", False):
+            final_structure = await self._merge_monorepo(artifacts)
+        
+        # Validate merged structure
+        validation = await self._validate_merged_structure(final_structure)
+        
+        # Generate README with setup instructions
+        if self.config["generate_readme"]:
+            final_structure["docs"]["README.md"] = await self._generate_readme(job_id, artifacts, config)
+        
+        # Generate docker-compose if needed
+        if config.get("dockerize", True):
+            final_structure["config"]["docker-compose.yml"] = await self._generate_docker_compose(artifacts)
+        
+        # Generate environment variables template
+        final_structure["config"][".env.example"] = await self._generate_env_example(artifacts)
+        
+        # Add validation results
+        final_structure["_validation"] = validation
+        
+        return final_structure
+    
+    async def _merge_monorepo(self, artifacts: Dict) -> Dict:
+        """Merge frontend and backend into monorepo structure"""
+        merged = {
+            "frontend": {},
+            "backend": {},
+            "infrastructure": artifacts.get("infra", {}),
+            "docs": {},
+            "config": {},
+            "packages": {}
+        }
+        
+        # Create monorepo structure
+        if artifacts.get("frontend"):
+            merged["packages"]["frontend"] = artifacts["frontend"]
+        
+        if artifacts.get("backend"):
+            merged["packages"]["backend"] = artifacts["backend"]
+        
+        # Add root package.json if Node.js
+        if self._is_nodejs_project(artifacts):
+            merged["config"]["package.json"] = await self._generate_root_package_json(artifacts)
+        
+        return merged
+    
+    async def _validate_merged_structure(self, structure: Dict) -> Dict:
+        """Validate merged structure for conflicts and consistency"""
+        issues = []
+        warnings = []
+        
+        # Check for file conflicts
+        all_files = set()
+        for section, content in structure.items():
+            if isinstance(content, dict):
+                for file_path in content.keys():
+                    if file_path in all_files:
+                        issues.append(f"File conflict: {file_path} appears in multiple sections")
+                    all_files.add(file_path)
+        
+        # Verify API contracts match
+        if structure.get("frontend") and structure.get("backend"):
+            contract_issues = await self._verify_api_contracts(structure)
+            issues.extend(contract_issues)
+        
+        # Check environment variables consistency
+        env_issues = await self._check_env_consistency(structure)
+        warnings.extend(env_issues)
+        
+        return {
+            "valid": len(issues) == 0,
+            "issues": issues,
+            "warnings": warnings,
+            "total_files": len(all_files)
+        }
+    
+    async def _verify_api_contracts(self, structure: Dict) -> List[str]:
+        """Verify frontend and backend API contracts match"""
+        issues = []
+        
+        # Extract API calls from frontend
+        frontend_api_calls = self._extract_api_calls(structure.get("frontend", {}))
+        
+        # Extract API endpoints from backend
+        backend_endpoints = self._extract_endpoints(structure.get("backend", {}))
+        
+        # Check for mismatches
+        for call in frontend_api_calls:
+            if call not in backend_endpoints:
+                issues.append(f"API endpoint {call} called by frontend but not defined in backend")
+        
+        return issues
+    
+    async def _generate_readme(self, job_id: str, artifacts: Dict, config: Dict) -> str:
+        """Generate comprehensive README.md"""
+        return f"""
+# AI Generated Application - {job_id}
+
+## Overview
+This application was automatically generated by AI DevFactory.
+
+## Project Structure
+- **Frontend**: {config.get('frontend', 'react')}
+- **Backend**: {config.get('backend', 'fastapi')}
+- **Cloud**: {config.get('cloud', 'azure')}
+
+## Quick Start
+
+### Prerequisites
+- Node.js (v18+)
+- Python (3.11+)
+- Docker (optional)
+
+### Installation
+
+1. **Backend Setup**
+```bash
+cd backend
+pip install -r requirements.txt
+python main.py
