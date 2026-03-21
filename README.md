@@ -1,209 +1,335 @@
-📌 README.md — AI DevFactory: Continuous AI Coding System
+🤖 AI DevFactory
+Transform Ideas into Production-Ready Code with 4 Parallel AI Agents
+https://img.shields.io/badge/License-MIT-yellow.svg
+https://img.shields.io/badge/python-3.11+-blue.svg
+https://img.shields.io/badge/flutter-3.19+-blue.svg
+https://img.shields.io/badge/FastAPI-0.104+-green.svg
 
-🚀 AI DevFactory
+What is AI DevFactory?
+AI DevFactory is an open-source, AI-driven continuous coding system that transforms natural language requirements into production-ready full-stack applications. It uses 4 parallel AI agents working simultaneously to generate frontend, backend, infrastructure, and QA code in minutes.
 
-AI DevFactory is an open-source, AI-driven continuous coding system that turns natural language requirements into production-ready code — iteratively, collaboratively, and flexibly.
-It lets you build or modify software products using AI agents, Visual Studio Code workspaces, and your own cloud storage or GitHub.
+The Vision: Developer Firm in a Box
 
-🎯 Key Goals
-✅ Automate code generation with AI
-✅ Support any programming language or framework
-✅ Keep humans in control with feedback loops
-✅ Store code securely — on GitHub or Azure Blob Storage
-✅ Scale to advanced uses like game engine coding
-✅ Enable a collaborative, extensible community
+AI DevFactory replaces an entire development team:
 
-⚙️ How It Works
-less
-Copy
-Edit
-graph TD
-  A[User] -->|Prompt + Requirements| B[Flutter Web UI]
-  B --> C[Orchestrator API]
-  C --> D[AI Agent + VS Code Server]
-  D --> E[Workspace Storage (Azure Blob)]
-  E -->|Checkpoints| D
-  D -->|Intermediate Results| B
-  B -->|Feedback| D
-  B -->|Finalize| F[Output Gateway]
-  F -->|Push to GitHub| G[GitHub Repo]
-  F -->|Save to Azure Blob| H[Blob Storage]
-  F -->|Download ZIP| I[ZIP Archive]
-1️⃣ Submit Prompt
-Describe what you want (e.g., “Build a Flask API with JWT auth”).
-Add requirements using the Requirement Viewer.
+Frontend Developer
 
-2️⃣ AI Generates Code
-A selected AI agent (Azure AI or your private model) writes code inside an isolated VS Code workspace.
+Backend Developer
 
-3️⃣ Live Iteration
-You review intermediate results, check logs, and give feedback — the AI updates code until you approve.
+DevOps Engineer
 
-4️⃣ Final Output
-When you’re ready, export:
+QA Engineer
 
-Push to your GitHub repo as a PR
+Technical Writer
 
-Save to Azure Blob Storage
+Security Expert
 
-Or Download as a ZIP file
+All for less than a cup of coffee.
 
-🧩 Tech Stack
-Frontend:
+Key Features
+Feature	Description
+Natural Language to Code	Describe your app in plain English
+Parallel Execution	4 agents work simultaneously (4x faster)
+Real-time Updates	Watch live logs and progress via WebSocket
+Quality Assurance	Automatic security scans, tests, performance
+Multi-Cloud	Deploy to Azure, AWS, or GCP
+Checkpoint System	Rollback to any stage
+Cost Tracking	Real-time cost estimation
+Extensible	Easy to add new agents
+Multi-Framework	React, Flutter, Vue.js, FastAPI, Django
+Dark Mode	Beautiful UI with light/dark themes
+System Architecture
+High-Level Architecture
+text
+USER INTERACTION
+        │
+        ├──────────────────┬──────────────────┐
+        ▼                  ▼                  ▼
+  Flutter Web         HTML Frontend      API Direct
+        │                  │                  │
+        └──────────────────┼──────────────────┘
+                          ▼
+              ┌─────────────────────┐
+              │   ORCHESTRATOR API  │
+              │   (FastAPI :8000)   │
+              │ • REST Endpoints    │
+              │ • WebSocket         │
+              │ • Job Management    │
+              │ • Agent Coordination│
+              └──────────┬──────────┘
+                         │
+        ┌────────────────┼────────────────┐
+        ▼                ▼                ▼
+   PostgreSQL         Redis           SQLite
+   (Jobs DB)         (Cache)         (Fallback)
+Agent Architecture - 4 Parallel Agents
+text
+┌─────────────────┐  ┌─────────────────┐  ┌─────────────────┐  ┌─────────────────┐
+│  FRONTEND       │  │  BACKEND        │  │  INFRA          │  │  QA             │
+│  AGENT          │  │  AGENT          │  │  AGENT          │  │  AGENT          │
+├─────────────────┤  ├─────────────────┤  ├─────────────────┤  ├─────────────────┤
+│ Generates:      │  │ Generates:      │  │ Generates:      │  │ Validates:      │
+│ • React         │  │ • FastAPI       │  │ • Azure Bicep   │  │ • Security      │
+│ • Flutter       │  │ • Django        │  │ • AWS Terraform │  │ • Tests         │
+│ • Vue.js        │  │ • Express       │  │ • GCP Terraform │  │ • Coverage      │
+│ • Tailwind      │  │ • PostgreSQL    │  │ • Auto-scaling  │  │ • Performance   │
+│ • Redux/Pinia   │  │ • JWT Auth      │  │ • Monitoring    │  │ • Best Practices│
+└─────────────────┘  └─────────────────┘  └─────────────────┘  └─────────────────┘
+        │                    │                    │                    │
+        └────────────────────┴────────────────────┴────────────────────┘
+                                        │
+                                        ▼
+                              ┌─────────────────┐
+                              │  FINAL OUTPUT   │
+                              │  • GitHub PR    │
+                              │  • ZIP Download │
+                              │  • Azure Blob   │
+                              └─────────────────┘
+Complete System Flow
+Phase 1: Job Submission (0-5 seconds)
+User enters prompt: "Build a task management app with user authentication"
 
-Flutter Web App
+User selects stack: React + FastAPI + Azure
 
-Prompt input
+User clicks "Generate Application"
 
-Requirement Viewer
+Frontend sends POST /jobs to Orchestrator
 
-Model Selector (choose AI)
+Orchestrator validates request, creates job record, returns job_id
 
-Monitoring & Logging Panel
+WebSocket connection opens for real-time updates
 
-Output Destination Selector
+Phase 2: Specification Generation (10-30 seconds)
+Spec Agent analyzes prompt and generates technical specifications
 
-Backend:
+Output includes: API specifications, database schema, UI components, security requirements
 
-Custom Orchestrator API (Python FastAPI or Node.js NestJS)
+Checkpoint created and saved
 
-VS Code Server (e.g., code-server) for live workspaces
+Progress updated: 5%
 
-AI Agents (OpenAI, Azure AI, or private ONNX models)
+Phase 3: Parallel Agent Execution (2-3 minutes) - 4x Faster!
+All 4 agents run simultaneously:
 
-Azure Blob Storage for persistent workspaces
+Agent	Input	Output
+Frontend Agent	UI specs, components	React components, Tailwind CSS, Redux store
+Backend Agent	API specs, DB schema	FastAPI endpoints, PostgreSQL ORM, JWT auth
+Infra Agent	Cloud specs, scaling	Azure Bicep, App Service, Cosmos DB
+QA Agent	All specs, generated code	Security scan, test results, quality report
+Progress updates continuously via WebSocket.
 
-GitHub for final delivery
+Phase 4: Integration & Packaging (5-10 seconds)
+Artifact Integrator merges all outputs into final project structure:
 
-📂 Repo Structure
+frontend/ - React components
+
+backend/ - FastAPI code
+
+infrastructure/ - Azure Bicep templates
+
+tests/ - Generated tests
+
+docs/ - README.md
+
+docker-compose.yml - Local development setup
+
+Phase 5: Export & Delivery (5-10 seconds)
+Based on user's output configuration:
+
+GitHub PR: Creates repository and pull request
+
+Azure Blob: Uploads ZIP archive with signed URL
+
+ZIP Download: Streams ZIP file to user
+
+Phase 6: Completion & Notification (2-5 seconds)
+Database updated: status = "completed", progress = 100%
+
+Cost calculated and displayed
+
+WebSocket pushes final status with download URL
+
+Real-Time WebSocket Communication Flow
+text
+FRONTEND                              ORCHESTRATOR
+    │                                      │
+    │  WebSocket Connection                 │
+    ├─────────────────────────────────────►│
+    │◄─────────────────────────────────────┤
+    │                                      │
+    │  Subscribe to job updates             │
+    ├─────────────────────────────────────►│
+    │                                      │
+    │◄─────────── Progress: 5% ────────────┤
+    │  {"type":"progress","stage":"specs"}  │
+    │                                      │
+    │◄─────────── Progress: 10% ───────────┤
+    │  {"type":"agent_start","agent":"frontend"}
+    │                                      │
+    │◄─────────── Log: Frontend 75% ───────┤
+    │  {"type":"log","agent":"frontend",    │
+    │   "message":"Generating components..."}
+    │                                      │
+    │◄─────────── Checkpoint Created ──────┤
+    │  {"type":"checkpoint","stage":"frontend"}
+    │                                      │
+    │◄─────────── Quality Report ──────────┤
+    │  {"type":"quality","score":85}        │
+    │                                      │
+    │  User provides feedback (if stuck)   │
+    ├─────────────────────────────────────►│
+    │  {"type":"feedback","message":"Use ORM"}
+    │                                      │
+    │◄─────────── Completed ───────────────┤
+    │  {"type":"completed","download_url":"..."}
+    │                                      │
+    │  WebSocket Closed                     │
+    └──────────────────────────────────────┘
+Error Handling & Recovery
+text
+AGENT EXECUTION
+       │
+       ▼
+┌─────────────────┐
+│  Agent Fails?   │
+└────────┬────────┘
+         │
+    ┌────┴────┬──────────┐
+    ▼         ▼          ▼
+Network    API Error  Validation
+Error      (4xx/5xx)  Error
+    │         │          │
+    └────┬────┴──────────┘
+         ▼
+┌─────────────────┐
+│  Retry Logic    │
+│  Exponential    │
+│  Backoff        │
+│  Max 3 attempts │
+└────────┬────────┘
+         │
+    ┌────┴────┐
+    ▼         ▼
+Success    All Retries
+Continue   Failed
+              │
+              ▼
+    ┌─────────────────┐
+    │  Circuit Breaker│
+    │  Opens after 3  │
+    │  failures       │
+    └────────┬────────┘
+             │
+    ┌────────┼────────┐
+    ▼        ▼        ▼
+Checkpoint Human    Partial
+Restore   Interven- Success
+          tion
+Supported Technologies
+Frontend Frameworks
+Framework	Status	Features
+React 18+	Fully Supported	Hooks, Context, Redux, Tailwind
+Flutter 3.19+	Fully Supported	Material Design, Riverpod
+Vue.js 3+	Fully Supported	Composition API, Pinia
+Backend Frameworks
+Framework	Status	Features
+FastAPI	Fully Supported	Async, OpenAPI, Pydantic
+Django	Fully Supported	ORM, Admin, Migrations
+Express.js	Fully Supported	Middleware, Routing
+Cloud Providers
+Provider	Status	IaC Format
+Microsoft Azure	Fully Supported	Bicep
+Amazon Web Services	Fully Supported	Terraform
+Google Cloud Platform	Fully Supported	Terraform
+Quick Start
+Prerequisites
+Python 3.11+
+
+Flutter 3.19+
+
+Docker (optional)
+
+Git
+
+Installation (5 Minutes)
 bash
-Copy
-Edit
-/frontend/   # Flutter Web App
-/backend/    # Orchestrator, VS Code server config, AI runners
-/infra/      # Deployment scripts, Dockerfiles, ARM templates
-/docs/       # Architecture, workflows, API docs
-/.github/    # Issues, PR templates, workflows
-✨ Key Features
-✅ Natural Language → Code
+# Clone the repository
+git clone https://github.com/TKpopoola-consulting/AI-DevFactory.git
+cd AI-DevFactory
 
-✅ Multi-agent: OpenAI, Azure AI, or self-hosted
+# Set up backend
+cd backend
+python3 -m venv venv
+source venv/bin/activate
+pip install -r orchestrator/requirements.txt
+pip install -r agents/backend_agent/requirements.txt
+pip install -r agents/frontend_agent/requirements.txt
+pip install -r agents/infra_agent/requirements.txt
+pip install -r agents/qa_agent/requirements.txt
 
-✅ Visual Studio Code integration — real file editing
+# Set up frontend
+cd ../frontend
+flutter pub get
 
-✅ Requirements Viewer — track project scope
+# Create .env file
+cp .env.example .env
+# Edit .env with your configuration
 
-✅ Monitoring & Logging — watch every step
+# Run the system
+# Terminal 1: Start orchestrator
+cd backend/orchestrator
+python main_simple.py
 
-✅ Checkpointing — safe version history
+# Terminal 2: Start frontend
+cd frontend
+flutter run -d chrome
+Environment Variables
+bash
+# .env file
+API_URL=http://localhost:8000
+WS_URL=ws://localhost:8000
+GEMINI_API_KEY=your_gemini_api_key
+API Endpoints
+Method	Endpoint	Description
+GET	/health	Health check
+POST	/jobs	Create a new job
+GET	/jobs	List all jobs
+GET	/jobs/{id}	Get job status
+POST	/jobs/{id}/cancel	Cancel job
+POST	/jobs/{id}/feedback	Provide feedback
+WS	/ws/{id}	WebSocket for real-time updates
+What You Can Build
+Application Type	Time	Features Generated
+E-Commerce Platform	3-4 min	Products, cart, checkout, payments, orders
+SaaS Platform	3-4 min	Multi-tenancy, subscriptions, billing
+Social Media App	2-3 min	Posts, comments, likes, messaging
+Task Management	1-2 min	Projects, tasks, deadlines, comments
+CRM System	2-3 min	Contacts, deals, pipelines, reports
+Healthcare Portal	3-4 min	Patient records, appointments, compliance
+Cost Breakdown
+Component	Cost per App
+AI Tokens	$0.02 - $0.05
+Compute	$0.002
+Storage	$0.0001
+Total	$0.02 - $0.05
+Contributing
+We welcome contributions! See CONTRIBUTING.md for details.
 
-✅ Export anywhere — GitHub PR, Azure Blob, or ZIP
+Ways to Contribute
+Report bugs - Open an issue
 
-💪 Why Open Source?
-We believe coding with AI should be transparent and community-driven.
-Everyone can:
+Suggest features - Start a discussion
 
-Add new AI agents
+Improve docs - Submit a PR
 
-Improve the orchestrator
+Add code - New agents, frameworks, or fixes
 
-Contribute connectors for new game engines or frameworks
+License
+MIT License. See LICENSE for details.
 
-Help test, debug, and secure the system
+Support
+Email: devs@sartorfit.com
 
-🤝 How to Contribute
-🍴 Fork this repo
+GitHub Issues: Create an issue
 
-🗂️ Check the open issues
-
-✍️ Submit a pull request
-
-🗨️ Join discussions to shape features
-
-✅ Follow CONTRIBUTING.md for coding standards
-
-🚧 Roadmap
- GPU-based agents for 3D game engine coding
-
- Real-time pair programming with VS Code Live Share
-
- Plugin marketplace for new AI tools
-
- Built-in doc generator for every code output
-
- 
----
-
-## ✅ `CODE_OF_CONDUCT.md`
-
-```markdown
-# Contributor Covenant Code of Conduct
-
-## Our Pledge
-
-We as members, contributors, and leaders pledge to make participation in our community a harassment-free experience for everyone, regardless of age, body size, visible or invisible disability, ethnicity, sex characteristics, gender identity, level of experience, education, socio-economic status, nationality, personal appearance, race, religion, or sexual identity and orientation.
-
-We pledge to act and interact in ways that contribute to an open, welcoming, diverse, inclusive, and healthy community.
-
----
-
-## Our Standards
-
-Examples of behavior that contributes to a positive environment for our community include:
-
-- Demonstrating empathy and kindness toward other people.
-- Being respectful of differing opinions, viewpoints, and experiences.
-- Giving and gracefully accepting constructive feedback.
-- Accepting responsibility and apologizing to those affected by our mistakes, and learning from the experience.
-- Focusing on what is best for the community and project overall.
-
-Examples of unacceptable behavior include:
-
-- The use of sexualized language or imagery, and sexual attention or advances of any kind.
-- Trolling, insulting, or derogatory comments, and personal or political attacks.
-- Public or private harassment.
-- Publishing others’ private information without explicit permission.
-- Other conduct which could reasonably be considered inappropriate in a professional setting.
-
----
-
-## Enforcement Responsibilities
-
-Community leaders are responsible for clarifying and enforcing our standards of acceptable behavior and will take appropriate and fair corrective action in response to any behavior that they deem inappropriate, threatening, offensive, or harmful.
-
----
-
-## Scope
-
-This Code of Conduct applies within all community spaces and also applies when an individual is officially representing the community in public spaces.
-
----
-
-## Enforcement
-
-Instances of abusive, harassing, or otherwise unacceptable behavior may be reported to the community leaders at **maintainers@yourdomain.com**. All complaints will be reviewed and investigated promptly and fairly.
-
----
-
-## Attribution
-
-This Code of Conduct is adapted from the [Contributor Covenant](https://www.contributor-covenant.org), version 2.1.
-
----
-
-Thank you for helping make this a welcoming and inclusive community!
-
-
-
-
-📜 License
-Open-source under the MIT License.
-
-📬 Contact
-Questions? Ideas?
-Open an issue or email devs@sartorfit.com.
-
-Let’s build the future of coding — together!
-
-
-
+<div align="center"> <p>Made with ❤️ by TKpopoola Consulting</p> <p>⭐ Star us on GitHub — it motivates us a lot!</p> </div> ```
