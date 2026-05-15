@@ -16,6 +16,8 @@ class ParallelAgentsWidget extends StatelessWidget {
       {'name': 'Backend', 'icon': Icons.storage, 'color': const Color(0xFF10B981)},
       {'name': 'Infrastructure', 'icon': Icons.cloud, 'color': const Color(0xFFF59E0B)},
       {'name': 'QA', 'icon': Icons.check_circle, 'color': const Color(0xFF8B5CF6)},
+      {'name': 'Fixer', 'icon': Icons.bug_report, 'color': const Color(0xFFEF4444)},
+      {'name': 'Modifier', 'icon': Icons.auto_fix_high, 'color': const Color(0xFF8B5CF6)},
     ];
     
     return Card(
@@ -44,7 +46,7 @@ class ParallelAgentsWidget extends StatelessWidget {
                       Icon(Icons.flash_on, size: 14, color: Colors.green),
                       SizedBox(width: 4),
                       Text(
-                        '4x Faster',
+                        '6x Faster',
                         style: TextStyle(fontSize: 12, color: Colors.green),
                       ),
                     ],
@@ -57,12 +59,12 @@ class ParallelAgentsWidget extends StatelessWidget {
               children: [
                 Expanded(
                   child: Text(
-                    '⚡ Total Speed: 4x faster than sequential execution',
+                    '⚡ Total Speed: 6x faster than sequential execution',
                     style: TextStyle(fontSize: 12, color: Colors.grey.shade600),
                   ),
                 ),
                 Text(
-                  'Active: ${agents.values.where((a) => a.status == 'running').length}/4',
+                  'Active: ${agents.values.where((a) => a.status == 'running').length}/6',
                   style: const TextStyle(fontSize: 12, fontWeight: FontWeight.w500),
                 ),
               ],
@@ -71,7 +73,7 @@ class ParallelAgentsWidget extends StatelessWidget {
             GridView.count(
               shrinkWrap: true,
               physics: const NeverScrollableScrollPhysics(),
-              crossAxisCount: 2,
+              crossAxisCount: 3,
               mainAxisSpacing: 12,
               crossAxisSpacing: 12,
               childAspectRatio: 1.5,

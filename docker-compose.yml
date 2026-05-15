@@ -1,0 +1,145 @@
+version: '3.8'
+
+services:
+  redis:
+    image: redis:7-alpine
+    container_name: ai-devfactory-redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis-data:/data
+    command: redis-server --appendonly yes
+
+  orchestrator:
+    build: ./backend/orchestrator
+    container_name: ai-devfactory-orchestrator
+    ports:
+      - "8000:8000"
+    environment:
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+      - FRONTEND_AGENT_URL=http://frontend-agent:5000
+      - BACKEND_AGENT_URL=http://backend-agent:5001
+      - INFRA_AGENT_URL=http://infra-agent:5002
+      - QA_AGENT_URL=http://qa-agent:5003
+      - MODIFIER_AGENT_URL=http://modifier-agent:5004
+      - SPEC_AGENT_URL=http://spec-agent:5005
+      - PACKAGING_AGENT_URL=http://packaging-agent:5006
+      - FIXER_AGENT_URL=http://fixer-agent:5007
+    depends_on:
+      - redis
+      - frontend-agent
+      - backend-agent
+      - infra-agent
+      - qa-agent
+      - modifier-agent
+      - fixer-agent
+    volumes:
+      - ./backend/orchestrator:/app
+      - ./logs:/logs
+
+  frontend-agent:
+    build: ./backend/agents/frontend_agent
+    container_name: ai-devfactory-frontend-agent
+    ports:
+      - "5000:5000"
+    environment:
+      - PORT=5000
+      - GEMINI_API_KEY=${GEMINI_API_KEY:-mock}
+    volumes:
+      - ./backend/agents/frontend_agent:/app
+      - ./logs:/logs
+
+  backend-agent:
+    build: ./backend/agents/backend_agent
+    container_name: ai-devfactory-backend-agent
+    ports:
+      - "5001:5001"
+    environment:
+      - PORT=5001
+    volumes:
+      - ./backend/agents/backend_agent:/app
+      - ./logs:/logs
+
+  infra-agent:
+    build: ./backend/agents/infra_agent
+    container_name: ai-devfactory-infra-agent
+    ports:
+      - "5002:5002"
+    environment:
+      - PORT=5002
+    volumes:
+      - ./backend/agents/infra_agent:/app
+      - ./logs:/logs
+
+  qa-agent:
+    build: ./backend/agents/qa_agent
+    container_name: ai-devfactory-qa-agent
+    ports:
+      - "5003:5003"
+    environment:
+      - PORT=5003
+    volumes:
+      - ./backend/agents/qa_agent:/app
+      - ./logs:/logs
+
+  modifier-agent:
+    build: ./backend/agents/modifier_agent
+    container_name: ai-devfactory-modifier-agent
+    ports:
+      - "5004:5004"
+    environment:
+      - PORT=5004
+    volumes:
+      - ./backend/agents/modifier_agent:/app
+      - ./logs:/logs
+
+  spec-agent:
+    build: ./backend/agents/spec_agent
+    container_name: ai-devfactory-spec-agent
+    ports:
+      - "5005:5005"
+    environment:
+      - PORT=5005
+    volumes:
+      - ./backend/agents/spec_agent:/app
+      - ./logs:/logs
+
+  packaging-agent:
+    build: ./backend/agents/packaging_agent
+    container_name: ai-devfactory-packaging-agent
+    ports:
+      - "5006:5006"
+    environment:
+      - PORT=5006
+    volumes:
+      - ./backend/agents/packaging_agent:/app
+      - ./logs:/logs
+
+  fixer-agent:
+    build: ./backend/agents/fixer_agent
+    container_name: ai-devfactory-fixer-agent
+    ports:
+      - "5007:5007"
+    environment:
+      - PORT=5007
+    volumes:
+      - ./backend/agents/fixer_agent:/app
+      - ./logs:/logs
+
+  web-ui:
+    build: ./frontend
+    container_name: ai-devfactory-web-ui
+    ports:
+      - "3000:3000"
+    environment:
+      - REACT_APP_API_URL=http://localhost:8000
+      - REACT_APP_ORCHESTRATOR_URL=http://orchestrator:8000
+    depends_on:
+      - orchestrator
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+
+volumes:
+  redis-data:

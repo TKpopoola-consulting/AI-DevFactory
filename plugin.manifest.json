@@ -1,0 +1,218 @@
+{
+  "name": "ai-devfactory-plugin",
+  "version": "1.0.0",
+  "description": "AI-DevFactory: Multi-agent application generation and code improvement system",
+  "type": "agent_orchestration",
+  "ecosystem_version": "9-stage-autonomous",
+
+  "entrypoints": {
+    "orchestrator": "./backend/orchestrator/main_simple.py",
+    "frontend_agent": "./backend/agents/frontend_agent/main.py",
+    "backend_agent": "./backend/agents/backend_agent/main.py",
+    "infra_agent": "./backend/agents/infra_agent/main_fastapi.py",
+    "qa_agent": "./backend/agents/qa_agent/main_fastapi.py",
+    "fixer_agent": "./backend/agents/fixer_agent/main.py",
+    "modifier_agent": "./backend/agents/modifier_agent/main.py",
+    "ui": "./frontend/lib/main.dart"
+  },
+
+  "capabilities": {
+    "code_generation": {
+      "frontend": ["react", "flutter", "vue"],
+      "backend": ["fastapi", "express", "django"],
+      "infrastructure": ["azure", "aws", "gcp", "kubernetes"]
+    },
+    "code_improvement": {
+      "refactoring": true,
+      "optimization": true,
+      "cleaning": true,
+      "structure_improvement": true
+    },
+    "bug_detection_fixing": {
+      "bug_detection": true,
+      "security_scanning": true,
+      "auto_fixing": true,
+      "validation": true,
+      "languages": ["python", "javascript", "java", "typescript"]
+    },
+    "quality_assurance": {
+      "security_scanning": true,
+      "test_generation": true,
+      "performance_analysis": true,
+      "quality_scoring": true
+    },
+    "parallel_execution": {
+      "max_parallel_agents": 6,
+      "speed_multiplier": 6,
+      "redis_coordination": true
+    },
+    "safety_governance": {
+      "capability_escalation_ladder": true,
+      "three_body_architecture": true,
+      "value_alignment_engine": true,
+      "audit_trails": true,
+      "human_oversight": true
+    }
+  },
+
+  "compatibility": {
+    "openclaw": {
+      "min_version": "1.0.0",
+      "max_version": "2.0.0",
+      "required_features": ["agent_orchestration", "plugin_management"]
+    },
+    "sartorfit_plugins": {
+      "compatible_with": ["perception-plugin", "cognitive-core-service", "agent-orchestration-factory"],
+      "integration_points": ["event_bus", "capability_registry", "value_alignment"]
+    },
+    "dependencies": {
+      "redis": ">=6.0.0",
+      "python": ">=3.9.0",
+      "fastapi": ">=0.104.0"
+    }
+  },
+
+  "safety_config": {
+    "max_capability_level": "LEVEL_5_ARCHITECT",
+    "requires_human_approval_for": [
+      "self_modification",
+      "core_system_changes",
+      "high_risk_security_operations"
+    ],
+    "value_alignment_required": true,
+    "audit_trail_required": true,
+    "rollback_capability": true,
+    "timeout_limits": {
+      "agent_execution": 300,
+      "job_processing": 3600,
+      "capability_escalation": 86400
+    }
+  },
+
+  "communication": {
+    "apis": {
+      "rest": {
+        "orchestrator": "http://localhost:8000",
+        "agents": ["http://localhost:5000", "http://localhost:5001", "http://localhost:5002", "http://localhost:5003", "http://localhost:5004", "http://localhost:5007"]
+      },
+      "websocket": {
+        "job_progress": "ws://localhost:8000/ws/{job_id}"
+      }
+    },
+    "events": {
+      "publishes": [
+        "ai-devfactory.job.created",
+        "ai-devfactory.job.progress",
+        "ai-devfactory.job.completed",
+        "ai-devfactory.job.failed",
+        "ai-devfactory.agent.started",
+        "ai-devfactory.agent.completed",
+        "ai-devfactory.capability.escalated",
+        "ai-devfactory.value_alignment.evaluated"
+      ],
+      "subscribes": [
+        "system.shutdown",
+        "user.command",
+        "plugin.registry.updated",
+        "safety.override.requested"
+      ]
+    }
+  },
+
+  "resource_requirements": {
+    "memory": {
+      "orchestrator": "512MB",
+      "per_agent": "256MB",
+      "total_estimated": "2GB"
+    },
+    "cpu": {
+      "orchestrator": "1 core",
+      "per_agent": "0.5 cores",
+      "total_estimated": "4 cores"
+    },
+    "storage": {
+      "code_generation": "1GB",
+      "audit_logs": "100MB/day",
+      "capability_database": "50MB"
+    }
+  },
+
+  "ui_integration": {
+    "dashboard_widgets": [
+      {
+        "id": "ai-devfactory-job-monitor",
+        "title": "AI DevFactory Jobs",
+        "component": "ParallelAgentsWidget",
+        "path": "./frontend/lib/widgets/parallel_agents_widget.dart"
+      },
+      {
+        "id": "ai-devfactory-safety-monitor",
+        "title": "Safety & Governance",
+        "component": "SafetyGovernanceWidget",
+        "requires_permission": "admin"
+      }
+    ],
+    "menu_entries": [
+      {
+        "id": "ai-devfactory",
+        "label": "AI DevFactory",
+        "path": "/ai-devfactory",
+        "icon": "factory",
+        "permission": "user"
+      }
+    ]
+  },
+
+  "deployment": {
+    "docker": {
+      "compose_file": "./docker-compose.yml",
+      "services": ["orchestrator", "frontend-agent", "backend-agent", "infra-agent", "qa-agent", "fixer-agent", "modifier-agent", "redis"],
+      "ports": [8000, 5000, 5001, 5002, 5003, 5004, 5007, 6379]
+    },
+    "kubernetes": {
+      "namespace": "ai-devfactory",
+      "deployment_ready": true,
+      "helm_chart_available": false
+    }
+  },
+
+  "testing": {
+    "test_script": "./test_agents.py",
+    "health_endpoints": [
+      "http://localhost:8000/health",
+      "http://localhost:5000/health",
+      "http://localhost:5001/health",
+      "http://localhost:5002/health",
+      "http://localhost:5003/health",
+      "http://localhost:5004/health",
+      "http://localhost:5007/health"
+    ],
+    "integration_tests": [
+      "full_stack_app_generation",
+      "bug_fixing_workflow",
+      "code_improvement_workflow",
+      "safety_system_verification"
+    ]
+  },
+
+  "documentation": {
+    "readme": "./README_COMPLETE.md",
+    "api_docs": "http://localhost:8000/docs",
+    "architecture": "./docs/architecture.md",
+    "safety_guide": "./docs/safety_guide.md"
+  },
+
+  "license": "MIT",
+  "repository": "https://github.com/sartorfit/ai-devfactory",
+  "support": {
+    "issues": "https://github.com/sartorfit/ai-devfactory/issues",
+    "discussions": "https://github.com/sartorfit/ai-devfactory/discussions"
+  },
+
+  "metadata": {
+    "created_at": "2026-05-02",
+    "updated_at": "2026-05-02",
+    "maintainers": ["sartorfit"],
+    "tags": ["ai", "code-generation", "multi-agent", "autonomous", "safety-first"]
+  }
+}

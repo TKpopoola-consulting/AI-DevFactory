@@ -8,11 +8,13 @@ class AgentCoordinator:
         self.client = httpx.AsyncClient(timeout=30.0)
         self.agent_endpoints = {
             "frontend_agent": "http://frontend-agent:5000/generate",
-            "backend_agent": "http://backend-agent:5000/generate",
-            "infra_agent": "http://infra-agent:5000/generate",
-            "qa_agent": "http://qa-agent:5000/analyze",
-            "spec_agent": "http://spec-agent:5000/generate-spec",
-            "packaging_agent": "http://packaging-agent:5000/package"
+            "backend_agent": "http://backend-agent:5001/generate",
+            "infra_agent": "http://infra-agent:5002/generate",
+            "qa_agent": "http://qa-agent:5003/analyze",
+            "spec_agent": "http://spec-agent:5005/generate-spec",
+            "packaging_agent": "http://packaging-agent:5006/package",
+            "fixer_agent": "http://fixer-agent:5007/fix",
+            "modifier_agent": "http://modifier-agent:5004/modify"
         }
         self.logger = logging.getLogger("agent_coordinator")
 
